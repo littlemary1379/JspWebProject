@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%@ include file="../include/nav.jsp"%>
-<link rel="stylesheet" href="/DailyT/css/Login.css">
+
 <div class="container h-100 col-md-6">
 	<h4>Login</h4>
 	<form class="form col-md-12">

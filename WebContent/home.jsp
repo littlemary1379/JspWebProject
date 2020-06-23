@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%@ include file="include/nav.jsp"%>
-<link rel="stylesheet" href="css/home.css">
 
 <!-- 이벤트 배너 시작 -->
 <div class="container-fluid">
