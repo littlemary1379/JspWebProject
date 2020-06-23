@@ -43,4 +43,25 @@ public class CustomerRepository {
 		return -1;
 	}
 	
+	public int userIDCheck(String userID) {
+		final String SQL="select count(userID) from customer where userid=?";
+		int result=0;
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			pstmt.setString(1, userID);
+			rs=pstmt.executeQuery();
+			
+			if (rs.next()) {
+				result=rs.getInt(1);
+			}
+			System.out.println(result);
+			return result;
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return -1;
+	}
+	
 }

@@ -11,6 +11,7 @@ import com.dailyT.action.Action;
 import com.dailyT.action.customer.JoinAction;
 import com.dailyT.action.customer.JoinProcAction;
 import com.dailyT.action.customer.LoginAction;
+import com.dailyT.action.customer.UserIDCheckAction;
 
 
 
@@ -52,6 +53,8 @@ public class CustomerController extends HttpServlet {
 			return new JoinAction();
 		}else if(cmd.equals("joinProc")) {
 			return new JoinProcAction();
+		}else if(cmd.equals("userIDCheck")) {
+			return new UserIDCheckAction();
 		}
 		
 		return null;
