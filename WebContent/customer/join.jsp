@@ -1,24 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ include file="../include/nav.jsp"%>
 
 
 <div class="container h-100 col-md-6">
-	<h4>Join</h4>
-	<!-- х╦©Ь╟║ют ют╥б фШ -->	
-	<form class="form col-md-12">
-		<!-- ID ют╥б, аъ╨╧х╝юн фШ -->
+	<h4 id="join-title">Join</h4>
+	<!-- М ▄Л⌡░Й╟─Л·┘ Л·┘К═╔ М▐╪ -->	
+	<form class="form col-md-12" action="/DailyT/cust?cmd=joinProc" method="post">
+		<!-- ID Л·┘К═╔, Л╓▒КЁ╣М≥∙Л²╦ М▐╪ -->
 		<div class="form-group">
-			<label class="ID-label">ID :</label> 
+			<label class="ID-label">ID :</label>
+			<button class="btn btn-primary"> ID Л╓▒КЁ╣ М≥∙Л²╦</button>
 			<input type="text" class="form-control" name="userID" id="userID">
-			<button class="btn btn-primary"> ID аъ╨╧ х╝юн</button>
+			
 		</div>
 		<div class="form-group">
 			<label for="pwd">PW :</label>
 			<input type="password" class="form-control" name="password" id="password">
 		</div>
 		<div class="form-group">
-			<label for="pwd">PW х╝юн :</label> 
+			<label for="pwd">PW М≥∙Л²╦ :</label> 
 			<input type="password" class="form-control" name="passwordcheck" id="passwordcheck">
 		</div>
 		<div class="form-group">
@@ -31,15 +32,11 @@
 		</div>
 		<div class="form-group">
 			<label for="address">address :</label> 
-			<input type="button" onClick="goPopup();" value="аж╪р ╟к╩Ж"/>
+			<input type="button" onClick="goPopup();" value="Лё╪Л├▄ Й╡─Л┐┴"/>
 			<input type="text" class="form-control" id="address" name="address" readonly>
-		</div>
+		</div>	
 		<div class="form-group">
-			<label for="address">╩С╪╪ аж╪р :</label> 
-			<input type="text" class="form-control" id="detailaddress" name="detailaddress">
-		</div>		
-		<div class="form-group">
-			<label for="cellphone">хч╢КфЫ(- ╩╘╟М ют╥бго╪╪©Д) :</label> 
+			<label for="cellphone">М°╢К▄─М▐╟(- К╧╪ЙЁ═ Л·┘К═╔М∙≤Л└╦Л ■) :</label> 
 			<input type="text" class="form-control" name="cellphone" id="cellphone">
 		</div>		
 		<div class="form-group d-flex justify-content-end">
@@ -50,5 +47,11 @@
 </div>
 
 <script src="/DailyT/js/juso.js"></script>
+<script>
+
+$.ajax({
+
+
+</script>
 </body>
 </html>

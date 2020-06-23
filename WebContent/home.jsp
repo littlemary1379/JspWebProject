@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ include file="include/nav.jsp"%>
 
-<!-- ÀÌº¥Æ® ¹è³Ê ½ÃÀÛ -->
+<!-- ì´ë²¤íŠ¸ ë°°ë„ˆ ì‹œìž‘ -->
 <div class="container-fluid">
 	<div id="demo" class="carousel slide" data-ride="carousel">
 

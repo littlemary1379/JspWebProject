@@ -1,14 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>DailyT È¨ÆäÀÌÁöÀÔ´Ï´Ù.</title>
+<title>DailyT í™ˆíŽ˜ì´ì§€ìž…ë‹ˆë‹¤.</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="stylesheet" href="/DailyT/css/nav.css">
 <link rel="stylesheet" href="/DailyT/css/login.css">
+<link rel="stylesheet" href="/DailyT/css/home.css">
+<link rel="stylesheet" href="/DailyT/css/join.css">
+
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -27,51 +30,50 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<!-- ·Î±×ÀÎ, È¸¿ø°¡ÀÔ, Àå¹Ù±¸´Ï ³»ºñ°ÔÀÌ¼Ç -->
+		<!-- ë¡œê·¸ì¸, íšŒì›ê°€ìž…, ìž¥ë°”êµ¬ë‹ˆ ë‚´ë¹„ê²Œì´ì…˜ -->
 		<div class="nav1">
 			<ul class="nav justify-content-end">
-				<li class="nav-item"><a class="nav-link" href="#">·Î±×ÀÎ</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">È¸¿ø°¡ÀÔ</a></li>
-				<li class="nav-item"><a class="nav-link" href="#"><i
-						class="fas fa fa-shopping-cart"></i></a></li>
+				<li class="nav-item"><a class="nav-link" href="/DailyT/cust?cmd=login">ë¡œê·¸ì¸</a></li>
+				<li class="nav-item"><a class="nav-link" href="/DailyT/cust?cmd=join">íšŒì›ê°€ìž…</a></li>
+				<li class="nav-item"><a class="nav-link" href="#"><i class="fas fa fa-shopping-cart"></i></a></li>
 			</ul>
 		</div>
-		<!-- ·Î±×ÀÎ, È¸¿ø°¡ÀÔ, Àå¹Ù±¸´Ï ³»ºñ°ÔÀÌ¼Ç Á¾·á-->
+		<!-- ë¡œê·¸ì¸, íšŒì›ê°€ìž…, ìž¥ë°”êµ¬ë‹ˆ ë‚´ë¹„ê²Œì´ì…˜ ì¢…ë£Œ-->
 
-		<!-- ºê·£µå ½ºÅä¸®, Á¤±â±¸µ¶, ´ÜÇ°, µµ±¸, ÀÌº¥Æ® ³»ºñ°ÔÀÌ¼Ç -->
+		<!-- ë¸Œëžœë“œ ìŠ¤í† ë¦¬, ì •ê¸°êµ¬ë…, ë‹¨í’ˆ, ë„êµ¬, ì´ë²¤íŠ¸ ë‚´ë¹„ê²Œì´ì…˜ -->
 		<div class="nav2">
 			<nav class="navbar navbar-menu navbar-expand-sm">
 
 				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link" href="#"><img
-							src="/DailyT/img/dailyT-100px.png" alt="Logo" style="width: 40px;"></a>
+					<li class="nav-item"><a class="nav-link" href="/DailyT/index?cmd=home">
+						<img src="/DailyT/img/dailyT-100px.png" alt="Logo" style="width: 50px;"></a>
 					</li>
-					<li class="nav-item2 col-md-4"><a class="nav-link" href="#">ºê·£µå
-							½ºÅä¸®</a>
+					<li class="nav-item2 col-md-3">
+					<a class="nav-link" href="#">ë¸Œëžœë“œ</a>
 						<ul class="detail-nav2">
-							<li><a class="detail-nav-link" href="#">ºê·£µå ½ºÅä¸®</a></li>
-							<li><a class="detail-nav-link" href="#">¼î·ë</a></li>
+							<li><a class="detail-nav-link" href="#">ë¸Œëžœë“œ ìŠ¤í† ë¦¬</a></li>
+							<li><a class="detail-nav-link" href="#">ì‡¼ë£¸</a></li>
 						</ul></li>
-					<li class="nav-item3 col-md-4"><a class="nav-link" href="#">Á¤±â±¸µ¶</a>
+					<li class="nav-item3 col-md-3"><a class="nav-link" href="#">ì •ê¸°êµ¬ë…</a>
 						<ul class="detail-nav3">
-							<li><a class="detail-nav-link" href="#">½ÃÁð ±¸µ¶</a></li>
-							<li><a class="detail-nav-link" href="#">Á¤±â ±¸µ¶</a></li>
+							<li><a class="detail-nav-link" href="#">ì‹œì¦Œ êµ¬ë…</a></li>
+							<li><a class="detail-nav-link" href="#">ì •ê¸° êµ¬ë…</a></li>
 						</ul></li>
-					<li class="nav-item4 col-md-4"><a class="nav-link" href="#">´ÜÇ°</a>
+					<li class="nav-item4 col-md-3"><a class="nav-link" href="#">ë‹¨í’ˆ</a>
 						<ul class="detail-nav4">
-							<li><a class="detail-nav-link" href="#">È«Â÷</a></li>
-							<li><a class="detail-nav-link" href="#">³ìÂ÷</a></li>
-							<li><a class="detail-nav-link" href="#">¹éÂ÷</a></li>
+							<li><a class="detail-nav-link" href="#">í™ì°¨</a></li>
+							<li><a class="detail-nav-link" href="#">ë…¹ì°¨</a></li>
+							<li><a class="detail-nav-link" href="#">ë°±ì°¨</a></li>
 						</ul></li>
-					<li class="nav-item5 col-md-4"><a class="nav-link" href="#">µµ±¸</a>
+					<li class="nav-item5 col-md-3"><a class="nav-link" href="#">ë„êµ¬</a>
 						<ul class="detail-nav5">
-							<li><a class="detail-nav-link" href="#">½ºÅ¸ÅÍÆÑ</a></li>
-							<li><a class="detail-nav-link" href="#">´Ù±¸</a></li>
+							<li><a class="detail-nav-link" href="#">ìŠ¤íƒ€í„°íŒ©</a></li>
+							<li><a class="detail-nav-link" href="#">ë‹¤êµ¬</a></li>
 						</ul></li>
-					<li class="nav-item  col-md-4"><a class="nav-link" href="#">ÀÌº¥Æ®</a>
+					<li class="nav-item  col-md-3"><a class="nav-link" href="#">ì´ë²¤íŠ¸</a>
 					</li>
 				</ul>
 			</nav>
 		</div>
 	</div>
-	<!-- ºê·£µå ½ºÅä¸®, Á¤±â±¸µ¶, ´ÜÇ°, µµ±¸, ÀÌº¥Æ® ³»ºñ°ÔÀÌ¼Ç Á¾·á -->
+	<!-- ë¸Œëžœë“œ ìŠ¤í† ë¦¬, ì •ê¸°êµ¬ë…, ë‹¨í’ˆ, ë„êµ¬, ì´ë²¤íŠ¸ ë‚´ë¹„ê²Œì´ì…˜ ì¢…ë£Œ -->

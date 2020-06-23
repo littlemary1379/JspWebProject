@@ -3,7 +3,7 @@
 <%@ include file="../include/nav.jsp"%>
 
 <div class="container h-100 col-md-6">
-	<h4>Login</h4>
+	<h4 id="login-title">Login</h4>
 	<form class="form col-md-12">
 		<div class="form-group">
 			<label class="ID-label" for="usr">ID :</label> 
