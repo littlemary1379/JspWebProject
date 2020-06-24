@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.dailyT.db.DBconnection;
+import com.dailyT.model.Customer;
 
 public class CustomerRepository {
 	private static final String TAG="CustomerRepository : ";
@@ -61,6 +62,39 @@ public class CustomerRepository {
 			// TODO: handle exception
 		}
 		return -1;
+	}
+	
+	public Customer findByUserIDandPassword(String userID,String password) {
+		final String SQL="select custid,userid,nickname,email,address,cellphone,userrole " + 
+						"from customer " + 
+						"where userid=? and password=?";
+		Customer cust=null;
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			pstmt.setString(1, userID);
+			pstmt.setString(2, password);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				cust=Customer.builder()
+					.custid(rs.getInt("custid"))
+					.userID(rs.getString("userid"))
+					.nickname(rs.getString("nickname"))
+					.email(rs.getString("email"))
+					.address(rs.getString("address"))
+					.cellphone(rs.getString("cellphone"))
+					.userrole(rs.getString("userrole"))
+					.build();
+			}
+			return cust;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG+"findByUserIDandPassword : "+e.getMessage());
+		}
+		return null;
+		
 	}
 	
 }
