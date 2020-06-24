@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dailyT.action.Action;
+import com.dailyT.action.customer.FindIDAction;
+import com.dailyT.action.customer.FindIDProcAction;
 import com.dailyT.action.customer.JoinAction;
 import com.dailyT.action.customer.JoinProcAction;
 import com.dailyT.action.customer.LoginAction;
@@ -59,8 +61,13 @@ public class CustomerController extends HttpServlet {
 		}else if(cmd.equals("userIDCheck")) {
 			return new UserIDCheckAction(); //ID 중복검사 액션
 		}else if(cmd.equals("logout")) {
-			return new LogoutAction(); //ID 중복검사 액션
+			return new LogoutAction(); //로그아웃 액션
+		}else if(cmd.equals("findID")) {
+			return new FindIDAction(); //ID 찾는 페이지 진입 액션
+		}else if(cmd.equals("findIDProc")) {
+			return new FindIDProcAction(); //ID 찾는 페이지 진입 액션
 		}
+		
 		
 		return null;
 	}

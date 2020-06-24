@@ -6,38 +6,49 @@
 <div class="container h-100 col-md-6">
 	<h4 id="join-title">Join</h4>
 	<!-- 회원가입 입력 폼 -->	
-	<form class="form col-md-12" action="/DailyT/cust?cmd=joinProc" method="post" onsubmit="return validate();">
+	<form class="form col-md-12 was-validated" action="/DailyT/cust?cmd=joinProc" method="post" onsubmit="return validate();">
 		<!-- ID 입력, 중복확인 폼 -->
 		<div class="form-group">
 			<label class="ID-label">ID :</label>
 			<button class="btn btn-primary" onclick="usernamecheck();" type="button"> ID 중복 확인</button>
-			<input type="text" class="form-control" name="userID" id="userID">
-			
+			<input type="text" class="form-control" name="userID" id="userID" required="required">
+			<div class="invalid-feedback">빈 칸을 채워주세요.</div>
 		</div>
 		<div class="form-group">
 			<label for="pwd">PW :</label>
-			<input type="password" class="form-control" name="password" id="password">
+			<input type="password" class="form-control" name="password" id="password" required="required">
+			<div class="invalid-feedback">빈 칸을 채워주세요.</div>
 		</div>
 		<div class="form-group">
 			<label for="pwd">PW 확인 :</label> 
-			<input type="password" class="form-control" name="passwordcheck" id="passwordcheck">
+			<input type="password" class="form-control" name="passwordcheck" id="passwordcheck" required="required">
+			<div class="invalid-feedback">빈 칸을 채워주세요.</div>
 		</div>
 		<div class="form-group">
+			<label for="nickname">이름 :</label> 
+			<input type="text" class="form-control" name="username" id="username" required="required">
+			<div class="invalid-feedback">빈 칸을 채워주세요.</div>
+		</div>		
+		<div class="form-group">
 			<label for="nickname">nickname :</label> 
-			<input type="text" class="form-control" name="nickname" id="nickname">
+			<input type="text" class="form-control" name="nickname" id="nickname" required="required">
+			<div class="invalid-feedback">빈 칸을 채워주세요.</div>
 		</div>
 		<div class="form-group">
 			<label for="pwd">email :</label> 
-			<input type="email" class="form-control" name="email" id="email">
+			<input type="email" class="form-control" name="email" id="email" required="required">
+			<div class="invalid-feedback">빈 칸을 채워주세요.</div>
 		</div>
 		<div class="form-group">
 			<label for="address">address :</label> 
 			<input type="button" onClick="goPopup();" value="주소 검색"/>
-			<input type="text" class="form-control" id="address" name="address" readonly>
+			<input type="text" class="form-control" id="address" name="address" readonly required="required">
+			<div class="invalid-feedback">빈 칸을 채워주세요..</div>
 		</div>	
 		<div class="form-group">
 			<label for="cellphone">휴대폰(- 빼고 입력하세요) :</label> 
-			<input type="text" class="form-control" name="cellphone" id="cellphone">
+			<input type="text" class="form-control" name="cellphone" id="cellphone" required="required">
+			<div class="invalid-feedback">빈 칸을 채워주세요.</div>
 		</div>		
 		<div class="form-group d-flex justify-content-end">
 			<button class="btn btn-primary" type="submit">Join</button>

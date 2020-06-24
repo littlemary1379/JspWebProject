@@ -1,25 +1,25 @@
-var usernamechecked=false;
+var userIDchecked=false;
 
 function validate(){
-	if(!usernamechecked){
+	if(!userIDchecked){
 		alert("ID 중복체크를 하십시오.");
 	}
-	return usernamechecked;
+	return userIDchecked;
 }
 
 function usernamecheck() {
-	var tfUsername=$("#userID").val();
-	console.log(tfUsername);
+	var tfUserID=$("#userID").val();
+	console.log(tfUserID);
 
 	$.ajax({
 		type:'get',
-		url : `/DailyT/cust?cmd=userIDCheck&userID=${tfUsername}`
+		url : `/DailyT/cust?cmd=userIDCheck&userID=${tfUserID}`
 }).done(function(result) {
 	if(result==1){
 		alert("중복되는 ID가 있습니다.");
 	}else{
 		alert("중복되는 ID가 없습니다.");
-		usernamechecked=true;
+		userIDchecked=true;
 	}
 	
 	

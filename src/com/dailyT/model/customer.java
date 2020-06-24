@@ -14,8 +14,9 @@ import lombok.NoArgsConstructor;
 public class Customer {
 	private int custid;
 	private String userID;
-	private String nickname;
 	private String password;
+	private String username;
+	private String nickname;
 	private String email;
 	private String address;
 	private String cellphone;

@@ -22,18 +22,19 @@ public class CustomerRepository {
 	private PreparedStatement pstmt=null;
 	private ResultSet rs=null;
 	
-	public int save(String userID, String password, String nickname, String email, String address, String cellphone) {
-		final String SQL="insert into customer (custid,userid,password,nickname,email,address,cellphone,userrole,createdate) " + 
-				"VALUES (CUSTID_SEQ.nextval,?,?,?,?,?,?,'사용자',sysdate)";
+	public int save(String userID, String password, String username, String nickname, String email, String address, String cellphone) {
+		final String SQL="insert into customer (custid,userid,password,username,nickname,email,address,cellphone,userrole,createdate) " + 
+				"VALUES (CUSTID_SEQ.nextval,?,?,?,?,?,?,?,'사용자',sysdate)";
 		try {
 			conn=DBconnection.DBconn();
 			pstmt=conn.prepareStatement(SQL);
 			pstmt.setString(1, userID);
 			pstmt.setString(2, password);
-			pstmt.setString(3, nickname);
-			pstmt.setString(4, email);
-			pstmt.setString(5, address);
-			pstmt.setString(6, cellphone);
+			pstmt.setString(3, username);
+			pstmt.setString(4, nickname);
+			pstmt.setString(5, email);
+			pstmt.setString(6, address);
+			pstmt.setString(7, cellphone);
 			
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -64,8 +65,29 @@ public class CustomerRepository {
 		return -1;
 	}
 	
+	public String FindIDByUsernameAndEmail(String username,String email) {
+		final String SQL="select userID from customer where username=? and email=?";
+		String result=null;
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			pstmt.setString(1, username);
+			pstmt.setString(2, email);
+			rs=pstmt.executeQuery();
+			
+			if (rs.next()) {
+				result=rs.getString("userID");
+			}
+			return result;
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return null;
+	}
+	
 	public Customer findByUserIDandPassword(String userID,String password) {
-		final String SQL="select custid,userid,nickname,email,address,cellphone,userrole " + 
+		final String SQL="select custid,userid,username,nickname,email,address,cellphone,userrole " + 
 						"from customer " + 
 						"where userid=? and password=?";
 		Customer cust=null;
@@ -80,6 +102,7 @@ public class CustomerRepository {
 				cust=Customer.builder()
 					.custid(rs.getInt("custid"))
 					.userID(rs.getString("userid"))
+					.username(rs.getString("username"))
 					.nickname(rs.getString("nickname"))
 					.email(rs.getString("email"))
 					.address(rs.getString("address"))

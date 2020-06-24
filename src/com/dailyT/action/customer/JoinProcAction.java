@@ -22,6 +22,8 @@ public class JoinProcAction implements Action{
 			request.getParameter("userID").equals("") ||
 			request.getParameter("password").equals(null) ||
 			request.getParameter("password").equals("") ||
+			request.getParameter("username").equals(null) ||
+			request.getParameter("username").equals("") ||
 			request.getParameter("nickname").equals(null) ||
 			request.getParameter("nickname").equals("") ||
 			request.getParameter("email").equals(null) ||
@@ -44,6 +46,7 @@ public class JoinProcAction implements Action{
 		String userID=request.getParameter("userID");
 		String rawPassword=request.getParameter("password");
 		String password=SHA256.encodeSha256(rawPassword);
+		String username=request.getParameter("username");
 		String nickname=request.getParameter("nickname");
 		String email=request.getParameter("email");
 		String address=request.getParameter("address");
@@ -51,12 +54,12 @@ public class JoinProcAction implements Action{
 		
 		//2.변수를 DB에 삽입
 		CustomerRepository customerRepository=CustomerRepository.getInstance();
-		int result=customerRepository.save(userID, password, nickname, email, address, cellphone);
+		int result=customerRepository.save(userID, password, username, nickname, email, address, cellphone);
 		
 		//3. DB 결과에 따른 결론 도출
 		
 		if(result==1) {
-			Script.href("회원가입에 성공하셨습니다.", "index.jsp", response);
+			Script.href("DailyT 회원이 되신 것을 축하합니다.", "index.jsp", response);
 		}else {
 			Script.back("회원가입에 실패하셨습니다.", response);
 		}

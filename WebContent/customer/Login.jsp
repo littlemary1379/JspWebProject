@@ -19,7 +19,7 @@
 		<hr/>
 		<label class="information-tag">아이디, 비밀번호를 잊으셨나요?</label>
 		<div class="form-group d-flex justify-content-end">
-			<button class="btn btn-primary mr-1" type="button">ID 찾기</button>
+			<a href="/DailyT/cust?cmd=findID"><button class="btn btn-primary mr-1" type="button">ID 찾기</button></a>
 			<button class="btn btn-primary" type="button">PW 찾기</button>
 		</div>
 	</form>
