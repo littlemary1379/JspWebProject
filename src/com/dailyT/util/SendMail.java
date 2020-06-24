@@ -45,7 +45,7 @@ public class SendMail {
 
             // send the message
             Transport.send(message); ////전송
-            System.out.println("message sent successfully...");
+            System.out.println("메일 발송 성공");
         } catch (AddressException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

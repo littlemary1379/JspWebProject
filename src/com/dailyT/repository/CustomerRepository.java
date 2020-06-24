@@ -22,6 +22,23 @@ public class CustomerRepository {
 	private PreparedStatement pstmt=null;
 	private ResultSet rs=null;
 	
+	public int resetPW(String password, String userID) {
+		final String SQL="update customer set password=? where userid=?";
+
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			pstmt.setString(1, password);
+			pstmt.setString(2, userID);
+			int result=pstmt.executeUpdate();
+			System.out.println(result);
+			return result;
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return -1;
+	}
+	
 	public int save(String userID, String password, String username, String nickname, String email, String address, String cellphone) {
 		final String SQL="insert into customer (custid,userid,password,username,nickname,email,address,cellphone,userrole,createdate) " + 
 				"VALUES (CUSTID_SEQ.nextval,?,?,?,?,?,?,?,'사용자',sysdate)";
@@ -84,6 +101,28 @@ public class CustomerRepository {
 			// TODO: handle exception
 		}
 		return null;
+	}
+	
+	public int FindIDByUserIDandUsernameAndEmail(String username, String userID, String email) {
+		final String SQL="select count(*) from customer where username=? and userID=? and email=?";
+		int result=0;
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			pstmt.setString(1, username);
+			pstmt.setString(2, userID);
+			pstmt.setString(3, email);
+			rs=pstmt.executeQuery();
+			
+			if (rs.next()) {
+				result=rs.getInt(1);
+			}
+			return result;
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return 0;
 	}
 	
 	public Customer findByUserIDandPassword(String userID,String password) {

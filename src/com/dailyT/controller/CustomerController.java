@@ -10,11 +10,15 @@ import javax.servlet.http.HttpServletResponse;
 import com.dailyT.action.Action;
 import com.dailyT.action.customer.FindIDAction;
 import com.dailyT.action.customer.FindIDProcAction;
+import com.dailyT.action.customer.FindPWAction;
+import com.dailyT.action.customer.FindPWProcAction;
 import com.dailyT.action.customer.JoinAction;
 import com.dailyT.action.customer.JoinProcAction;
 import com.dailyT.action.customer.LoginAction;
 import com.dailyT.action.customer.LoginProcAction;
 import com.dailyT.action.customer.LogoutAction;
+import com.dailyT.action.customer.ResetPWAction;
+import com.dailyT.action.customer.ResetPWProcAction;
 import com.dailyT.action.customer.UserIDCheckAction;
 
 
@@ -66,6 +70,14 @@ public class CustomerController extends HttpServlet {
 			return new FindIDAction(); //ID 찾는 페이지 진입 액션
 		}else if(cmd.equals("findIDProc")) {
 			return new FindIDProcAction(); //ID 찾는 페이지 진입 액션
+		}else if(cmd.equals("findPW")) {
+			return new FindPWAction(); //PW 찾는 페이지 진입 액션
+		}else if(cmd.equals("findPWProc")) {
+			return new FindPWProcAction(); //DB에 접근해서 존재여부 확인 후, 초기화 페이지로 보내주는 액션
+		}else if(cmd.equals("resetPW")) {
+			return new ResetPWAction(); //PW 초기화 페이지 진입 액션
+		}else if(cmd.equals("ResetPWProc")) {
+			return new ResetPWProcAction(); //DB에서 비밀번호 초기화 액션
 		}
 		
 		

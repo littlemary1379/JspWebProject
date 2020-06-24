@@ -20,12 +20,12 @@
 		<label class="information-tag">아이디, 비밀번호를 잊으셨나요?</label>
 		<div class="form-group d-flex justify-content-end">
 			<a href="/DailyT/cust?cmd=findID"><button class="btn btn-primary mr-1" type="button">ID 찾기</button></a>
-			<button class="btn btn-primary" type="button">PW 찾기</button>
+			<a href="/DailyT/cust?cmd=findPW"><button class="btn btn-primary" type="button">PW 찾기</button></a>
 		</div>
 	</form>
 	<div class="join d-flex justify-content-end">
 		<label class="information-tag mr-2 align-self-center">아직 회원이 아니신가요? </label>
-		<button class="btn btn-primary" type="button">회원가입</button>
+		<a href="/DailyT/cust?cmd=join"><button class="btn btn-primary" type="button">회원가입</button></a>
 	</div>
 </div>
 
