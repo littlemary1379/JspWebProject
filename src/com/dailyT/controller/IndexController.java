@@ -14,7 +14,7 @@ import com.dailyT.action.index.HomeAction;
 @WebServlet("/index")
 public class IndexController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String TAG="CustomerController : ";
+	private static final String TAG="IndexController : ";
 
     public IndexController() {
         super();

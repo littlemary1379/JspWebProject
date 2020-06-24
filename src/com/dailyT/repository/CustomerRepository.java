@@ -22,6 +22,48 @@ public class CustomerRepository {
 	private PreparedStatement pstmt=null;
 	private ResultSet rs=null;
 	
+	public int custUpdate(String nickname, String email, String address, String cellphone, String userID) {
+		final String SQL="update customer set nickname=?, email=?, address=?, cellphone=? where userid=?";
+
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			pstmt.setString(1, nickname);
+			pstmt.setString(2, email);
+			pstmt.setString(3, address);
+			pstmt.setString(4, cellphone);
+			pstmt.setString(5, userID);
+			
+			int result=pstmt.executeUpdate();
+			System.out.println(result);
+			return result;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG+"custUpdate : "+e.getMessage());
+			// TODO: handle exception
+		}
+		return -1;
+	}
+	
+	public String FindPWByCustid(int custid) {
+		final String SQL="select password from customer where custid=?";
+		String resultPassword=null;
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			pstmt.setInt(1, custid);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				resultPassword=rs.getString("password");
+				return resultPassword;
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return null;
+	}
+	
 	public int resetPW(String password, String userID) {
 		final String SQL="update customer set password=? where userid=?";
 

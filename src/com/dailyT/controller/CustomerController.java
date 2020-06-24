@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dailyT.action.Action;
+import com.dailyT.action.customer.CustUpdateAction;
+import com.dailyT.action.customer.CustUpdateProcAction;
 import com.dailyT.action.customer.FindIDAction;
 import com.dailyT.action.customer.FindIDProcAction;
 import com.dailyT.action.customer.FindPWAction;
@@ -17,6 +19,7 @@ import com.dailyT.action.customer.JoinProcAction;
 import com.dailyT.action.customer.LoginAction;
 import com.dailyT.action.customer.LoginProcAction;
 import com.dailyT.action.customer.LogoutAction;
+import com.dailyT.action.customer.PWCheckAction;
 import com.dailyT.action.customer.ResetPWAction;
 import com.dailyT.action.customer.ResetPWProcAction;
 import com.dailyT.action.customer.UserIDCheckAction;
@@ -78,6 +81,12 @@ public class CustomerController extends HttpServlet {
 			return new ResetPWAction(); //PW 초기화 페이지 진입 액션
 		}else if(cmd.equals("ResetPWProc")) {
 			return new ResetPWProcAction(); //DB에서 비밀번호 초기화 액션
+		}else if(cmd.equals("PWCheck")) {
+			return new PWCheckAction(); //회원정보 수정 전, 비밀번호 확인 페이지 진입 액션
+		}else if(cmd.equals("custUpdate")) {
+			return new CustUpdateAction(); //비밀번호가 일치하는지 확인하고, 일치한다면 회원수정 페이지로 이동하는 액션
+		}else if(cmd.equals("custUpdateProc")) {
+			return new CustUpdateProcAction(); //입력된 정보로 업데이트 하는 액션
 		}
 		
 		
