@@ -6,7 +6,7 @@
 <div class="container h-100 col-md-6">
 	<h4 id="join-title">Join</h4>
 	<!-- 회원가입 입력 폼 -->	
-	<form class="form col-md-12" action="/DailyT/cust?cmd=joinProc" method="post" onsubmit="return validate()">
+	<form class="form col-md-12" action="/DailyT/cust?cmd=joinProc" method="post" onsubmit="return validate();">
 		<!-- ID 입력, 중복확인 폼 -->
 		<div class="form-group">
 			<label class="ID-label">ID :</label>

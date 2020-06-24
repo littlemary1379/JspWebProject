@@ -1,8 +1,8 @@
 var usernamechecked=false;
 
-function vaildate(){
-	if(usernamechecked){
-		alert("ID 중복체크를 하십시오.")
+function validate(){
+	if(!usernamechecked){
+		alert("ID 중복체크를 하십시오.");
 	}
 	return usernamechecked;
 }

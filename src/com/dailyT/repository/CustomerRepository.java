@@ -55,7 +55,6 @@ public class CustomerRepository {
 			if (rs.next()) {
 				result=rs.getInt(1);
 			}
-			System.out.println(result);
 			return result;
 			
 		} catch (Exception e) {
