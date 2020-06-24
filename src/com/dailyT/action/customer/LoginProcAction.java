@@ -36,7 +36,7 @@ public class LoginProcAction implements Action{
 		CustomerRepository customerRepository=CustomerRepository.getInstance();
 		Customer cust=customerRepository.findByUserIDandPassword(userID, password);
 		
-		//3. 세션에 받아온 모델 값을 넣어서 세션 유지시키기
+		//3. 세션에 받아온 모델 값을 넣어서 세션에 넣어 이동
 		
 		if (cust!=null) {
 			HttpSession session=request.getSession();

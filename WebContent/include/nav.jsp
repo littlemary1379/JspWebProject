@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,9 +35,17 @@
 		<!-- 로그인, 회원가입, 장바구니 내비게이션 -->
 		<div class="nav1">
 			<ul class="nav justify-content-end">
-				<li class="nav-item"><a class="nav-link" href="/DailyT/cust?cmd=login">로그인</a></li>
-				<li class="nav-item"><a class="nav-link" href="/DailyT/cust?cmd=join">회원가입</a></li>
-				<li class="nav-item"><a class="nav-link" href="#"><i class="fas fa fa-shopping-cart"></i></a></li>
+			<!-- if문을 통해 세션에 유저정보가 없으면 로그인, 회원가입/ 있다면 로그아웃, 회원정보 수정 띄우기-->
+				<c:if test="${empty sessionScope.principal }">		
+					<li class="nav-item"><a class="nav-link" href="/DailyT/cust?cmd=login">로그인</a></li>
+					<li class="nav-item"><a class="nav-link" href="/DailyT/cust?cmd=join">회원가입</a></li>
+					<li class="nav-item"><a class="nav-link" href="#"><i class="fas fa fa-shopping-cart"></i></a></li>
+				</c:if>	
+				<c:if test="${not empty sessionScope.principal }">		
+					<li class="nav-item"><a class="nav-link" href="#">회원정보 수정</a></li>
+					<li class="nav-item"><a class="nav-link" href="/DailyT/cust?cmd=logout">로그아웃</a></li>
+					<li class="nav-item"><a class="nav-link" href="#"><i class="fas fa fa-shopping-cart"></i></a></li>
+				</c:if>	
 			</ul>
 		</div>
 		<!-- 로그인, 회원가입, 장바구니 내비게이션 종료-->
