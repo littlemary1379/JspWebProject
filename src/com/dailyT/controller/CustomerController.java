@@ -12,6 +12,7 @@ import com.dailyT.action.customer.JoinAction;
 import com.dailyT.action.customer.JoinProcAction;
 import com.dailyT.action.customer.LoginAction;
 import com.dailyT.action.customer.LoginProcAction;
+import com.dailyT.action.customer.LogoutAction;
 import com.dailyT.action.customer.UserIDCheckAction;
 
 
@@ -57,6 +58,8 @@ public class CustomerController extends HttpServlet {
 			return new JoinProcAction(); //DB에 접근해 실질적인 회원가입을 담당하는 액션
 		}else if(cmd.equals("userIDCheck")) {
 			return new UserIDCheckAction(); //ID 중복검사 액션
+		}else if(cmd.equals("logout")) {
+			return new LogoutAction(); //ID 중복검사 액션
 		}
 		
 		return null;
