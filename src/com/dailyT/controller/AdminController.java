@@ -9,8 +9,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.dailyT.action.Action;
 import com.dailyT.action.admin.HomeAction;
+import com.dailyT.action.admin.ProListAction;
+import com.dailyT.action.admin.ProUpdateAction;
+import com.dailyT.action.admin.ProUpdateProcAction;
 import com.dailyT.action.admin.ProregAction;
 import com.dailyT.action.admin.ProregProcAction;
+import com.dailyT.action.admin.SubListAction;
+import com.dailyT.action.admin.SubUpdateAction;
+import com.dailyT.action.admin.SubUpdateProcAction;
 import com.dailyT.action.admin.SubregAction;
 import com.dailyT.action.admin.SubregProcAction;
 import com.dailyT.action.customer.CustUpdateAction;
@@ -65,14 +71,25 @@ public class AdminController extends HttpServlet {
 		if(cmd.equals("home")) { 
 			return new HomeAction(); //관리자 홈페이지 진입 액션
 		}else if(cmd.equals("subreg")) { 
-			return new SubregAction(); //정기구독 등록 홈페이지 진입 액션
+			return new SubregAction(); //정기구독 등록 페이지 진입 액션
 		}else if(cmd.equals("subregProc")) { 
 			return new SubregProcAction(); // DB 등록 액션
+		}else if(cmd.equals("sublist")) { 
+			return new SubListAction(); // 구독 관리 페이지 진입 액션	
+		}else if(cmd.equals("subUpdate")) { 
+			return new SubUpdateAction(); // 구독 관리 페이지 진입 액션	
+		}else if(cmd.equals("subUpdateProc")) { 
+			return new SubUpdateProcAction(); // 구독 관리 페이지 진입 액션	
 		}else if(cmd.equals("proreg")) { 
-			return new ProregAction(); // 단품 등록 홈페이지 진입 액션
+			return new ProregAction(); // 단품 등록 페이지 진입 액션
 		}else if(cmd.equals("proregProc")) { 
-			return new ProregProcAction(); // 단품 등록 홈페이지 진입 액션
-			
+			return new ProregProcAction(); // 단품 등록 페이지 진입 액션	
+		}else if(cmd.equals("prolist")) { 
+			return new ProListAction(); // 단품 관리 페이지 진입 액션	
+		}else if(cmd.equals("proUpdate")) { 
+			return new ProUpdateAction(); // 단품 관리 페이지 진입 액션	
+		}else if(cmd.equals("proUpdateProc")) { 
+			return new ProUpdateProcAction(); // 단품 관리 페이지 진입 액션	
 		}
 		
 		return null;

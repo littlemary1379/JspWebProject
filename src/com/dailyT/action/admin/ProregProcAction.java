@@ -28,18 +28,37 @@ public class ProregProcAction implements Action{
 														new DefaultFileRenamePolicy()
 														);
 			
-		//2. 변수에 받아온 값 넣기
+			//유효성 검사
+			if(multi.getParameter("proname").equals("")||
+				multi.getParameter("proname").equals(null)||
+				multi.getParameter("proPrice").equals("")||
+				multi.getParameter("proPrice").equals(null)||
+				multi.getParameter("proSale").equals("")||
+				multi.getParameter("proSale").equals(null)||
+				multi.getParameter("prokind").equals("")||
+				multi.getParameter("prokind").equals(null)||
+				multi.getFilesystemName("proPhoto").equals("")||
+				multi.getFilesystemName("proPhoto").equals(null)||
+				multi.getParameter("proContent").equals("")||
+				multi.getParameter("proContent").equals(null)) {
+				
+				Script.back("빈 값이 있습니다. 채워주세요 ^^", response);
+				return;
+			}
+			
+			
+			//2. 변수에 받아온 값 넣기
 			String proname=multi.getParameter("proname");
 			int proPrice=Integer.parseInt(multi.getParameter("proPrice"));
 			//integer 파싱용
 			int proSale=0;
-			if(multi.getParameter("prosale")==null||multi.getParameter("prosale").equals("")) {
+			if(multi.getParameter("proSale")==null||multi.getParameter("proSale").equals("")) {
 				proSale=0;
 			}else {
-				proSale=Integer.parseInt(multi.getParameter("prosale"));
+				proSale=Integer.parseInt(multi.getParameter("proSale"));
 			}
 			String prokind=multi.getParameter("prokind");
-			System.out.println(prokind);
+			int proStock=Integer.parseInt(multi.getParameter("proStock"));
 			String proDate=multi.getParameter("proDate");
 			String proPhoto=multi.getFilesystemName("proPhoto");
 			String proContent=multi.getParameter("proContent");
@@ -48,7 +67,7 @@ public class ProregProcAction implements Action{
 		//3. 변수값을 데이터베이스에 넣기
 			
 			AdminRepository adminRepository=AdminRepository.getInstance();
-			int result=adminRepository.proSave(proname, proPrice, proSale, prokind, proDate, proPhoto, proContent);
+			int result=adminRepository.proSave(proname, proPrice, proSale, prokind, proStock, proDate, proPhoto, proContent);
 			System.out.println(result);
 			
 		//4. 값을 데이터베이스에 넣는데 성공했으면, admin 첫 페이지로 돌아가고, 아니라면 history.back()

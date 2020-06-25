@@ -11,11 +11,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class Product {
-	private int proid;
-	private String proname;
+	private int proId;
+	private String proName;
 	private int proPrice;
 	private int proSale;
 	private String prokind;
+	private int proStock;
 	private String proDate;
 	private String proPhoto;
 	private String proContent;
