@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.dailyT.action.Action;
 import com.dailyT.action.admin.HomeAction;
+import com.dailyT.action.admin.ProregAction;
+import com.dailyT.action.admin.ProregProcAction;
+import com.dailyT.action.admin.SubregAction;
+import com.dailyT.action.admin.SubregProcAction;
 import com.dailyT.action.customer.CustUpdateAction;
 import com.dailyT.action.customer.CustUpdateProcAction;
 import com.dailyT.action.customer.FindIDAction;
@@ -30,7 +34,7 @@ import com.dailyT.action.customer.UserIDCheckAction;
 @WebServlet("/admin")
 public class AdminController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String TAG="CustomerController : ";
+	private static final String TAG="AdminController : ";
 
     public AdminController() {
         super();
@@ -60,8 +64,16 @@ public class AdminController extends HttpServlet {
 	Action router(String cmd) {
 		if(cmd.equals("home")) { 
 			return new HomeAction(); //관리자 홈페이지 진입 액션
+		}else if(cmd.equals("subreg")) { 
+			return new SubregAction(); //정기구독 등록 홈페이지 진입 액션
+		}else if(cmd.equals("subregProc")) { 
+			return new SubregProcAction(); // DB 등록 액션
+		}else if(cmd.equals("proreg")) { 
+			return new ProregAction(); // 단품 등록 홈페이지 진입 액션
+		}else if(cmd.equals("proregProc")) { 
+			return new ProregProcAction(); // 단품 등록 홈페이지 진입 액션
+			
 		}
-		
 		
 		return null;
 	}
