@@ -15,7 +15,7 @@
 
 <div class="container">
 <h4>단품 등록</h4>
-	<form action="/DailyT/admin?cmd=proUpdateProc" method="post" enctype="multipart/form-data">
+	<form action="/DailyT/admin?cmd=proregProc" method="post" enctype="multipart/form-data">
 		<div class="form-group">
 			<label for="proname">상품 이름 : </label> 
 			<input type="text" class="form-control" id="proname" name="proname">

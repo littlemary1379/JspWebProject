@@ -9,11 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.dailyT.action.Action;
 import com.dailyT.action.admin.HomeAction;
+import com.dailyT.action.admin.SubDeleteAction;
 import com.dailyT.action.admin.ProListAction;
 import com.dailyT.action.admin.ProUpdateAction;
 import com.dailyT.action.admin.ProUpdateProcAction;
 import com.dailyT.action.admin.ProregAction;
 import com.dailyT.action.admin.ProregProcAction;
+import com.dailyT.action.admin.ProDeleteAction;
 import com.dailyT.action.admin.SubListAction;
 import com.dailyT.action.admin.SubUpdateAction;
 import com.dailyT.action.admin.SubUpdateProcAction;
@@ -80,6 +82,8 @@ public class AdminController extends HttpServlet {
 			return new SubUpdateAction(); // 구독 관리 페이지 진입 액션	
 		}else if(cmd.equals("subUpdateProc")) { 
 			return new SubUpdateProcAction(); // 구독 관리 페이지 진입 액션	
+		}else if(cmd.equals("subdelete")) { 
+			return new SubDeleteAction(); // 단품 관리 페이지 진입 액션	
 		}else if(cmd.equals("proreg")) { 
 			return new ProregAction(); // 단품 등록 페이지 진입 액션
 		}else if(cmd.equals("proregProc")) { 
@@ -90,6 +94,8 @@ public class AdminController extends HttpServlet {
 			return new ProUpdateAction(); // 단품 관리 페이지 진입 액션	
 		}else if(cmd.equals("proUpdateProc")) { 
 			return new ProUpdateProcAction(); // 단품 관리 페이지 진입 액션	
+		}else if(cmd.equals("prodelete")) { 
+			return new ProDeleteAction(); // 단품 관리 페이지 진입 액션	
 		}
 		
 		return null;

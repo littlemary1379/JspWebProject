@@ -29,6 +29,44 @@ public class AdminRepository {
 	
 	
 	
+	public int deletePro(int proId) {
+		final String SQL="delete from product where proid=?";
+
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			pstmt.setInt(1, proId);
+			
+			int result=pstmt.executeUpdate();
+			System.out.println(result);
+			return result;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG+"deletePro : "+e.getMessage());
+		}
+		return -1;
+	}
+	
+	public int deleteSub(int subId) {
+		final String SQL="delete from subproduct where subid=?";
+
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			pstmt.setInt(1, subId);
+			
+			int result=pstmt.executeUpdate();
+			System.out.println(result);
+			return result;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG+"deleteSub : "+e.getMessage());
+		}
+		return -1;
+	}
+	
 	public SubProduct findSubProductByProID(int subId) {
 		final String SQL="select subId, subname,subPrice,subsale,subDate,subPhoto,subContent from subproduct where subId=?";
 
