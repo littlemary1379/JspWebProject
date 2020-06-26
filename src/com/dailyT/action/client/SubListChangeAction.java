@@ -35,7 +35,7 @@ public class SubListChangeAction implements Action {
 			String result=gson.toJson(subProducts);
 			Script.ajaxJson(result, response);
 			
-		}else if(season.equals("기본")) {
+		}else if(season.equals("정기")) {
 			System.out.println(TAG+season+" 값 확인됨.");
 			List<SubProduct> subProducts=clientRepository.FindOriginSubProduct();
 			Gson gson=new Gson();

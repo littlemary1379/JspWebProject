@@ -15,7 +15,7 @@
 
 	<div class="subscribe-button d-flex">
 		<button onclick="listChange('전체');">구독 전체</button>
-		<button onclick="listChange('기본');">기본 구독</button>
+		<button onclick="listChange('정기');">정기 구독</button>
 		<button onclick="listChange('시즌');">시즌 구독</button>
 	</div>
 	<div id="subscribe-items">
