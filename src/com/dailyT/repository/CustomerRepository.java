@@ -182,7 +182,7 @@ public class CustomerRepository {
 			while(rs.next()) {
 				cust=Customer.builder()
 					.custid(rs.getInt("custid"))
-					.userID(rs.getString("userid"))
+					.userId(rs.getString("userid"))
 					.username(rs.getString("username"))
 					.nickname(rs.getString("nickname"))
 					.email(rs.getString("email"))

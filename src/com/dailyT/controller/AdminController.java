@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dailyT.action.Action;
+import com.dailyT.action.admin.CustListAction;
 import com.dailyT.action.admin.HomeAction;
 import com.dailyT.action.admin.SubDeleteAction;
 import com.dailyT.action.admin.ProListAction;
@@ -79,23 +80,25 @@ public class AdminController extends HttpServlet {
 		}else if(cmd.equals("sublist")) { 
 			return new SubListAction(); // 구독 관리 페이지 진입 액션	
 		}else if(cmd.equals("subUpdate")) { 
-			return new SubUpdateAction(); // 구독 관리 페이지 진입 액션	
+			return new SubUpdateAction(); // 구독 수정 페이지 진입 액션	
 		}else if(cmd.equals("subUpdateProc")) { 
-			return new SubUpdateProcAction(); // 구독 관리 페이지 진입 액션	
+			return new SubUpdateProcAction(); // 구독 수정 액션	
 		}else if(cmd.equals("subdelete")) { 
-			return new SubDeleteAction(); // 단품 관리 페이지 진입 액션	
+			return new SubDeleteAction(); // 구독 삭제 페이지 진입 액션	
 		}else if(cmd.equals("proreg")) { 
 			return new ProregAction(); // 단품 등록 페이지 진입 액션
 		}else if(cmd.equals("proregProc")) { 
-			return new ProregProcAction(); // 단품 등록 페이지 진입 액션	
+			return new ProregProcAction(); // 단품 등록 액션	
 		}else if(cmd.equals("prolist")) { 
 			return new ProListAction(); // 단품 관리 페이지 진입 액션	
 		}else if(cmd.equals("proUpdate")) { 
-			return new ProUpdateAction(); // 단품 관리 페이지 진입 액션	
+			return new ProUpdateAction(); // 단품 수정 페이지 진입 액션	
 		}else if(cmd.equals("proUpdateProc")) { 
-			return new ProUpdateProcAction(); // 단품 관리 페이지 진입 액션	
+			return new ProUpdateProcAction(); // 단품 수정 액션	
 		}else if(cmd.equals("prodelete")) { 
-			return new ProDeleteAction(); // 단품 관리 페이지 진입 액션	
+			return new ProDeleteAction(); // 단품 삭제 액션	
+		}else if(cmd.equals("custlist")) { 
+			return new CustListAction(); // 단품 관리 페이지 진입 액션	
 		}
 		
 		return null;

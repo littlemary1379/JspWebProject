@@ -28,6 +28,36 @@ public class AdminRepository {
 	private ResultSet rs=null;
 	
 	
+	public List<Customer> FindAllCustomer() {
+		final String SQL="select custid,userid,username,nickname,email,address,cellphone from customer where userrole='사용자'" ;
+		List<Customer> customers=new ArrayList<>();
+		Customer customer=null;
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				customer=Customer.builder()
+						.custid(rs.getInt("custid"))
+						.userId(rs.getString("userid"))
+						.username(rs.getString("username"))
+						.nickname(rs.getString("nickname"))
+						.email(rs.getString("email"))
+						.address(rs.getString("address"))
+						.cellphone(rs.getString("cellphone"))
+						.build();
+				customers.add(customer);
+			}
+			
+			return customers;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG+"FindAllCustomer : "+e.getMessage());
+		}
+		return null;
+	}
 	
 	public int deletePro(int proId) {
 		final String SQL="delete from product where proid=?";
@@ -91,7 +121,8 @@ public class AdminRepository {
 			}
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
+			System.out.println(TAG+"findSubProductByProID : "+e.getMessage());
 		}
 		return null;
 	}
@@ -119,7 +150,8 @@ public class AdminRepository {
 			return subproducts;
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
+			System.out.println(TAG+"FindAllSubProduct : "+e.getMessage());
 		}
 		return null;
 	}
@@ -149,7 +181,8 @@ public class AdminRepository {
 			return products;
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
+			System.out.println(TAG+"FindAllProduct : "+e.getMessage());
 		}
 		return null;
 	}
@@ -171,7 +204,6 @@ public class AdminRepository {
 			
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println(TAG+"proSave : "+e.getMessage());
 		}
@@ -193,7 +225,6 @@ public class AdminRepository {
 			
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println(TAG+"save : "+e.getMessage());
 		}
@@ -223,7 +254,7 @@ public class AdminRepository {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println(TAG+"custUpdate : "+e.getMessage());
-			// TODO: handle exception
+			
 		}
 		return -1;
 	}
@@ -249,7 +280,7 @@ public class AdminRepository {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println(TAG+"subproductUpdate : "+e.getMessage());
-			// TODO: handle exception
+		
 		}
 		return -1;
 	}
@@ -382,7 +413,7 @@ public class AdminRepository {
 			while(rs.next()) {
 				cust=Customer.builder()
 					.custid(rs.getInt("custid"))
-					.userID(rs.getString("userid"))
+					.userId(rs.getString("userid"))
 					.username(rs.getString("username"))
 					.nickname(rs.getString("nickname"))
 					.email(rs.getString("email"))

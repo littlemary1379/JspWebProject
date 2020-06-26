@@ -9,7 +9,7 @@
 		<a href="/DailyT/admin?cmd=subreg" class="list-group-item list-group-item-action">정기구독 등록</a>
 		<a href="/DailyT/admin?cmd=sublist" class="list-group-item list-group-item-action">정기구독 관리</a> 
 		 
-		<a href="#" class="list-group-item list-group-item-action">회원 관리</a>
+		<a href="/DailyT/admin?cmd=custlist" class="list-group-item list-group-item-action">회원 관리</a>
 	</div>
 </div>
 
