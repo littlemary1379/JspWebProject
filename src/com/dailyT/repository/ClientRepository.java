@@ -13,13 +13,13 @@ import com.dailyT.model.Customer;
 import com.dailyT.model.Product;
 import com.dailyT.model.SubProduct;
 
-public class AdminRepository {
+public class ClientRepository {
 	private static final String TAG="AdminRepository : ";
 	
 	//싱글톤 패턴 제작
-	private static AdminRepository instance = new AdminRepository();
-	private AdminRepository() {}
-	public static AdminRepository getInstance() {
+	private static ClientRepository instance = new ClientRepository();
+	private ClientRepository() {}
+	public static ClientRepository getInstance() {
 		return instance;
 	}
 	
@@ -129,7 +129,7 @@ public class AdminRepository {
 	}
 	
 	public List<SubProduct> FindAllSubProduct() {
-		final String SQL="select subid,subname,subprice,subsale,subdate from subproduct";
+		final String SQL="select subid,subname,subprice,subsale,subdate,subPhoto,subPreview from subproduct";
 		List<SubProduct> subproducts=new ArrayList<>();
 		SubProduct subproduct=null;
 		try {
@@ -144,6 +144,70 @@ public class AdminRepository {
 						.subPrice(rs.getInt("subprice"))
 						.subSale(rs.getInt("subsale"))
 						.subDate(rs.getString("subdate"))
+						.subPhoto(rs.getString("subPhoto"))
+						.subPreview(rs.getString("subPreview"))
+						.build();
+				subproducts.add(subproduct);
+			}
+			
+			return subproducts;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG+"FindAllSubProduct : "+e.getMessage());
+		}
+		return null;
+	}
+	
+	public List<SubProduct> FindOriginSubProduct() {
+		final String SQL="select subid,subname,subprice,subsale,subdate,subPhoto,subPreview from subproduct where subdate is null";
+		List<SubProduct> subproducts=new ArrayList<>();
+		SubProduct subproduct=null;
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				subproduct=SubProduct.builder()
+						.subId(rs.getInt("subid"))
+						.subName(rs.getString("subname"))
+						.subPrice(rs.getInt("subprice"))
+						.subSale(rs.getInt("subsale"))
+						.subDate(rs.getString("subdate"))
+						.subPhoto(rs.getString("subPhoto"))
+						.subPreview(rs.getString("subPreview"))
+						.build();
+				subproducts.add(subproduct);
+			}
+			
+			return subproducts;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG+"FindAllSubProduct : "+e.getMessage());
+		}
+		return null;
+	}
+	
+	public List<SubProduct> FindSeasonSubProduct() {
+		final String SQL="select subid,subname,subprice,subsale,subdate,subPhoto,subPreview from subproduct where subdate is not null";
+		List<SubProduct> subproducts=new ArrayList<>();
+		SubProduct subproduct=null;
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				subproduct=SubProduct.builder()
+						.subId(rs.getInt("subid"))
+						.subName(rs.getString("subname"))
+						.subPrice(rs.getInt("subprice"))
+						.subSale(rs.getInt("subsale"))
+						.subDate(rs.getString("subdate"))
+						.subPhoto(rs.getString("subPhoto"))
+						.subPreview(rs.getString("subPreview"))
 						.build();
 				subproducts.add(subproduct);
 			}
@@ -321,5 +385,121 @@ public class AdminRepository {
 		}
 		return null;
 	}
+	
 
+	
+	public int resetPW(String password, String userID) {
+		final String SQL="update customer set password=? where userid=?";
+
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			pstmt.setString(1, password);
+			pstmt.setString(2, userID);
+			int result=pstmt.executeUpdate();
+			System.out.println(result);
+			return result;
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return -1;
+	}
+	
+	public int userIDCheck(String userID) {
+		final String SQL="select count(userID) from customer where userid=?";
+		int result=0;
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			pstmt.setString(1, userID);
+			rs=pstmt.executeQuery();
+			
+			if (rs.next()) {
+				result=rs.getInt(1);
+			}
+			return result;
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return -1;
+	}
+	
+	public String FindIDByUsernameAndEmail(String username,String email) {
+		final String SQL="select userID from customer where username=? and email=?";
+		String result=null;
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			pstmt.setString(1, username);
+			pstmt.setString(2, email);
+			rs=pstmt.executeQuery();
+			
+			if (rs.next()) {
+				result=rs.getString("userID");
+			}
+			return result;
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return null;
+	}
+	
+	public int FindIDByUserIDandUsernameAndEmail(String username, String userID, String email) {
+		final String SQL="select count(*) from customer where username=? and userID=? and email=?";
+		int result=0;
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			pstmt.setString(1, username);
+			pstmt.setString(2, userID);
+			pstmt.setString(3, email);
+			rs=pstmt.executeQuery();
+			
+			if (rs.next()) {
+				result=rs.getInt(1);
+			}
+			return result;
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return 0;
+	}
+	
+	public Customer findByUserIDandPassword(String userID,String password) {
+		final String SQL="select custid,userid,username,nickname,email,address,cellphone,userrole " + 
+						"from customer " + 
+						"where userid=? and password=?";
+		Customer cust=null;
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			pstmt.setString(1, userID);
+			pstmt.setString(2, password);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				cust=Customer.builder()
+					.custid(rs.getInt("custid"))
+					.userId(rs.getString("userid"))
+					.username(rs.getString("username"))
+					.nickname(rs.getString("nickname"))
+					.email(rs.getString("email"))
+					.address(rs.getString("address"))
+					.cellphone(rs.getString("cellphone"))
+					.userrole(rs.getString("userrole"))
+					.build();
+			}
+			return cust;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG+"findByUserIDandPassword : "+e.getMessage());
+		}
+		return null;
+		
+	}
+	
 }

@@ -77,8 +77,13 @@
 			<input type="text" class="form-control" id="datepicker" name="proDate">
 		</div>
 		<div class="form-group bg-light">
-			<label for="subPhoto">대표 사진 : </label> 
+			<label for="subPhoto">대표 사진 : </label>
+			<label for="subPhoto"><b>사진을 다시 넣어주세요.</b></label> 			 
 			<input type="file" class="form-control" name="proPhoto" id="proPhoto" />
+		</div>
+		<div class="form-group">
+			<label for="preview">미리보기:</label>
+			<textarea class="form-control" rows="5" id="preview" name="preview">${product.preview }</textarea>
 		</div>		
 		<div class="form-group">
 			<label for="content">세부 내용:</label>

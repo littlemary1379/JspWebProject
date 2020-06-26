@@ -31,7 +31,7 @@
 		<!-- 로그아웃만 구현 -->
 		<div class="nav1">
 			<ul class="nav justify-content-end">
-				<li class="nav-item"><a class="nav-link" href="/DailyT/cust?cmd=logout">로그인</a></li>
+				<li class="nav-item"><a class="nav-link" href="/DailyT/cust?cmd=logout">로그아웃</a></li>
 			</ul>
 		</div>
 		<!--로그아웃 내비게이션 종료-->

@@ -40,9 +40,15 @@
 			<input type="text" class="form-control" id="datepicker" name="subDate">
 		</div>
 		<div class="form-group bg-light">
-			<label for="subPhoto">대표 사진 : </label> 
+			<label for="subPhoto">대표 사진 : </label>
+			<label for="subPhoto"><b>사진을 다시 넣어주세요.</b></label> 
 			<input type="file" class="form-control" name="subPhoto" id="subPhoto" />
-		</div>		
+		</div>
+		<div class="form-group">
+			<label for="subPreview">미리보기:</label>
+			<textarea class="form-control" rows="5" id="subPreview" name="subPreview">${subproduct.subPreview }</textarea>
+		</div>
+				
 		<div class="form-group">
 			<label for="subcontent">세부 내용:</label>
 			<textarea class="form-control" rows="5" id="summernote" name="subContent">${subproduct.subContent }</textarea>

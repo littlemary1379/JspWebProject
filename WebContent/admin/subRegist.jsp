@@ -37,6 +37,10 @@
 			<input type="file" class="form-control" name="subPhoto" id="subPhoto" />
 		</div>
 		<div class="form-group">
+			<label for="content">미리보기:</label>
+			<textarea class="form-control" rows="5" id="subPreview" name="subPreview"></textarea>
+		</div>
+		<div class="form-group">
 			<label for="content">세부 내용:</label>
 			<textarea class="form-control" rows="5" id="summernote" name="subContent"></textarea>
 		</div>

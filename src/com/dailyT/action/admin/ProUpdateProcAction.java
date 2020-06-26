@@ -31,6 +31,7 @@ public class ProUpdateProcAction implements Action {
 					|| multi.getParameter("proSale").equals("") || multi.getParameter("proSale").equals(null)
 					|| multi.getParameter("prokind").equals("") || multi.getParameter("prokind").equals(null)
 					|| multi.getFilesystemName("proPhoto").equals("") || multi.getFilesystemName("proPhoto").equals(null)
+					|| multi.getFilesystemName("preview").equals("") || multi.getFilesystemName("preview").equals(null)
 					|| multi.getParameter("proContent").equals("") || multi.getParameter("proContent").equals(null)) {
 
 				Script.back("빈 값이 있습니다. 채워주세요 ^^", response);
@@ -52,12 +53,13 @@ public class ProUpdateProcAction implements Action {
 			int proStock = Integer.parseInt(multi.getParameter("proStock"));
 			String proDate = multi.getParameter("proDate");
 			String proPhoto = multi.getFilesystemName("proPhoto");
+			String preview = multi.getFilesystemName("preview");
 			String proContent = multi.getParameter("proContent");
 
 			
 			//3. 데이터베이스에 변수 넣어서 업데이트 실행
 			AdminRepository adminRepository=AdminRepository.getInstance();
-			int result=adminRepository.productUpdate(proname, proPrice, proSale, prokind, proStock, proDate, proPhoto, proContent, proId);
+			int result=adminRepository.productUpdate(proname, proPrice, proSale, prokind, proStock, proDate, proPhoto, preview, proContent, proId);
 			
 			//4. 결과값에 따라, 수정이 되었으면 리스트로 돌려놓고, 수정이 되지 않을 시 스크립트백
 			if(result==1) {

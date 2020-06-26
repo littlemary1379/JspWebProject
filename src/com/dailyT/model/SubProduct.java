@@ -17,5 +17,6 @@ public class SubProduct {
 	private int subSale;
 	private String subPhoto;
 	private String subContent;
+	private String subPreview;
 	private String subDate;
 }

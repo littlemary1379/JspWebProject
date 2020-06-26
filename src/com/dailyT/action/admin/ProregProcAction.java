@@ -13,7 +13,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class ProregProcAction implements Action{
-	private static final String TAG="SubregProcAction : ";
+	private static final String TAG="ProregProcAction : ";
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -33,12 +33,14 @@ public class ProregProcAction implements Action{
 				multi.getParameter("proname").equals(null)||
 				multi.getParameter("proPrice").equals("")||
 				multi.getParameter("proPrice").equals(null)||
-				multi.getParameter("proSale").equals("")||
-				multi.getParameter("proSale").equals(null)||
 				multi.getParameter("prokind").equals("")||
 				multi.getParameter("prokind").equals(null)||
+				multi.getParameter("proStock").equals("")||
+				multi.getParameter("proStock").equals(null)||
 				multi.getFilesystemName("proPhoto").equals("")||
 				multi.getFilesystemName("proPhoto").equals(null)||
+				multi.getParameter("preview").equals("")||
+				multi.getParameter("preview").equals(null)||
 				multi.getParameter("proContent").equals("")||
 				multi.getParameter("proContent").equals(null)) {
 				
@@ -61,13 +63,15 @@ public class ProregProcAction implements Action{
 			int proStock=Integer.parseInt(multi.getParameter("proStock"));
 			String proDate=multi.getParameter("proDate");
 			String proPhoto=multi.getFilesystemName("proPhoto");
+			String preview=multi.getParameter("preview");
+			System.out.println(TAG+"preview : "+ preview);
 			String proContent=multi.getParameter("proContent");
 
 			
 		//3. 변수값을 데이터베이스에 넣기
 			
 			AdminRepository adminRepository=AdminRepository.getInstance();
-			int result=adminRepository.proSave(proname, proPrice, proSale, prokind, proStock, proDate, proPhoto, proContent);
+			int result=adminRepository.proSave(proname, proPrice, proSale, prokind, proStock, proDate, proPhoto, preview, proContent);
 			System.out.println(result);
 			
 		//4. 값을 데이터베이스에 넣는데 성공했으면, admin 첫 페이지로 돌아가고, 아니라면 history.back()
@@ -81,7 +85,7 @@ public class ProregProcAction implements Action{
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println(TAG+"로직 오류");
-			// TODO: handle exception
+		
 		}
 	}
 

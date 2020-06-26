@@ -52,6 +52,10 @@
 			<input type="file" class="form-control" name="proPhoto" id="proPhoto" />
 		</div>
 		<div class="form-group">
+			<label for="preview">미리보기:</label>
+			<textarea class="form-control" rows="5" id="preview" name="preview"></textarea>
+		</div>
+		<div class="form-group">
 			<label for="content">세부 내용:</label>
 			<textarea class="form-control" rows="5" id="summernote" name="proContent"></textarea>
 		</div>

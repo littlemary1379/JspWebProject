@@ -19,5 +19,6 @@ public class Product {
 	private int proStock;
 	private String proDate;
 	private String proPhoto;
+	private String preview;
 	private String proContent;
 }

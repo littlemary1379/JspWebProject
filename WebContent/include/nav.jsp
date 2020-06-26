@@ -65,7 +65,7 @@
 							<li><a class="detail-nav-link" href="#">브랜드 스토리</a></li>
 							<li><a class="detail-nav-link" href="#">쇼룸</a></li>
 						</ul></li>
-					<li class="nav-item3 col-md-3"><a class="nav-link" href="#">정기구독</a>
+					<li class="nav-item3 col-md-3"><a class="nav-link" href="/DailyT/client?cmd=sublist">정기구독</a>
 						<ul class="detail-nav3">
 							<li><a class="detail-nav-link" href="#">시즌 구독</a></li>
 							<li><a class="detail-nav-link" href="#">정기 구독</a></li>
