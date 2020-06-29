@@ -9,9 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.dailyT.db.DBconnection;
+import com.dailyT.dto.subReplyView;
 import com.dailyT.model.Customer;
 import com.dailyT.model.Product;
 import com.dailyT.model.SubProduct;
+import com.dailyT.model.SubReply;
 
 public class ClientRepository {
 	private static final String TAG="AdminRepository : ";
@@ -28,76 +30,57 @@ public class ClientRepository {
 	private ResultSet rs=null;
 	
 	
-	public List<Customer> FindAllCustomer() {
-		final String SQL="select custid,userid,username,nickname,email,address,cellphone from customer where userrole='사용자'" ;
-		List<Customer> customers=new ArrayList<>();
-		Customer customer=null;
+	public List<subReplyView> findSubReply(int subid) {
+		final String SQL="select replyid,subreply.custid,nickname,score,content " + 
+				"from subreply,customer " + 
+				"where subreply.custid=customer.custid and subid=? order by replyid desc";
+		List<subReplyView> subReplies=new ArrayList<>();
+		subReplyView subReply=null;
 		try {
 			conn=DBconnection.DBconn();
 			pstmt=conn.prepareStatement(SQL);
+			pstmt.setInt(1, subid);
 			rs=pstmt.executeQuery();
 			
 			while(rs.next()) {
-				customer=Customer.builder()
+				subReply=subReplyView.builder()
+						.replyid(rs.getInt("replyid"))
 						.custid(rs.getInt("custid"))
-						.userId(rs.getString("userid"))
-						.username(rs.getString("username"))
 						.nickname(rs.getString("nickname"))
-						.email(rs.getString("email"))
-						.address(rs.getString("address"))
-						.cellphone(rs.getString("cellphone"))
+						.score(rs.getInt("score"))
+						.content(rs.getString("content"))
 						.build();
-				customers.add(customer);
+				subReplies.add(subReply);
 			}
 			
-			return customers;
-			
-		} catch (Exception e) {
+			return subReplies;
+		} catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println(TAG+"FindAllCustomer : "+e.getMessage());
+			System.out.println(TAG+"findSubReply : "+e.getMessage());
 		}
 		return null;
 	}
 	
-	public int deletePro(int proId) {
-		final String SQL="delete from product where proid=?";
-
+	public int subReplySave(SubReply subReply) {
+		final String SQL="insert into subReply (replyid,custid,subid,score,content) " + 
+				"VALUES (subreply_SEQ.nextval,?,?,?,?)";
 		try {
 			conn=DBconnection.DBconn();
 			pstmt=conn.prepareStatement(SQL);
-			pstmt.setInt(1, proId);
+			pstmt.setInt(1, subReply.getCustid());
+			pstmt.setInt(2, subReply.getSubid());
+			pstmt.setInt(3, subReply.getScore());
+			pstmt.setString(4, subReply.getContent());
 			
-			int result=pstmt.executeUpdate();
-			System.out.println(result);
-			return result;
-			
-		} catch (Exception e) {
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println(TAG+"deletePro : "+e.getMessage());
+			System.out.println(TAG+"subReplySave : "+e.getMessage());
 		}
 		return -1;
 	}
-	
-	public int deleteSub(int subId) {
-		final String SQL="delete from subproduct where subid=?";
-
-		try {
-			conn=DBconnection.DBconn();
-			pstmt=conn.prepareStatement(SQL);
-			pstmt.setInt(1, subId);
-			
-			int result=pstmt.executeUpdate();
-			System.out.println(result);
-			return result;
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println(TAG+"deleteSub : "+e.getMessage());
-		}
-		return -1;
-	}
-	
-	public SubProduct findSubProductByProID(int subId) {
+		
+	public SubProduct findSubProductBySubID(int subId) {
 		final String SQL="select subId, subname,subPrice,subsale,subDate,subPhoto,subPreview,subContent from subproduct where subId=?";
 
 		SubProduct subproduct=null;
@@ -123,7 +106,7 @@ public class ClientRepository {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println(TAG+"findSubProductByProID : "+e.getMessage());
+			System.out.println(TAG+"findSubProductBySubID : "+e.getMessage());
 		}
 		return null;
 	}
@@ -275,29 +258,7 @@ public class ClientRepository {
 		}
 		return -1;
 	}
-	
-	public int subSave(String subName,int subPrice, int subSale, String subDate, String subPhoto,String subPreview,String subContent) {
-		final String SQL="insert into subProduct (subid,subName,subPrice,subSale,subDate,subPhoto,subPreview,subContent) " + 
-				"VALUES (SUBPRODUCT_SEQ.nextval,?,?,?,?,?,?,?)";
-		try {
-			conn=DBconnection.DBconn();
-			pstmt=conn.prepareStatement(SQL);
-			pstmt.setString(1, subName);
-			pstmt.setInt(2, subPrice);
-			pstmt.setInt(3, subSale);
-			pstmt.setString(4, subDate);
-			pstmt.setString(5, subPhoto);
-			pstmt.setString(6, subPreview);
-			pstmt.setString(7, subContent);
-			
-			return pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println(TAG+"subSave : "+e.getMessage());
-		}
-		return -1;
-	}
-	
+		
 	public int productUpdate(String proname,int proPrice, int proSale, String prokind, int proStock, String proDate, String proPhoto,String preview,String proContent, int proid) {
 		final String SQL="update product set proname=?, proPrice=?, proSale=?, prokind=?, proStock=?, proDate=?, proPhoto=?,preview=?, proContent=? where proid=?";
 

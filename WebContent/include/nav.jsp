@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="/DailyT/css/login.css">
 <link rel="stylesheet" href="/DailyT/css/home.css">
 <link rel="stylesheet" href="/DailyT/css/join.css">
+<link rel="stylesheet" href="/DailyT/css/subscribe.css">
 
 
 <link rel="stylesheet"
