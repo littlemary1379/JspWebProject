@@ -71,11 +71,11 @@
 							<li><a class="detail-nav-link" href="/DailyT/client?cmd=sublist&season=origin">정기 구독</a></li>
 							<li><a class="detail-nav-link" href="/DailyT/client?cmd=sublist&season=season">시즌 구독</a></li>
 						</ul></li>
-					<li class="nav-item4 col-md-3"><a class="nav-link" href="#">단품</a>
+					<li class="nav-item4 col-md-3"><a class="nav-link" href="/DailyT/client?cmd=prolist&category=all">단품</a>
 						<ul class="detail-nav4">
-							<li><a class="detail-nav-link" href="#">홍차</a></li>
-							<li><a class="detail-nav-link" href="#">녹차</a></li>
-							<li><a class="detail-nav-link" href="#">백차</a></li>
+							<li><a class="detail-nav-link" href="/DailyT/client?cmd=prolist&category=blacktea">홍차</a></li>
+							<li><a class="detail-nav-link" href="/DailyT/client?cmd=prolist&category=greentea">녹차</a></li>
+							<li><a class="detail-nav-link" href="/DailyT/client?cmd=prolist&category=whitetea">백차</a></li>
 						</ul></li>
 					<li class="nav-item5 col-md-3"><a class="nav-link" href="#">도구</a>
 						<ul class="detail-nav5">

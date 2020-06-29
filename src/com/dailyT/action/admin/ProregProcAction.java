@@ -18,7 +18,8 @@ public class ProregProcAction implements Action{
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//1. 업로드할 파일의 경로를 지정하고, 받아와야할 request 값을 cos 라이브러리로 불러옴
-		String realPath=request.getServletContext().getRealPath("upload");
+		String realPath=request.getServletContext().getRealPath("img");
+		String ContextPath=request.getServletContext().getContextPath();
 		
 		try {
 			MultipartRequest multi=new MultipartRequest(request,
@@ -62,7 +63,7 @@ public class ProregProcAction implements Action{
 			String prokind=multi.getParameter("prokind");
 			int proStock=Integer.parseInt(multi.getParameter("proStock"));
 			String proDate=multi.getParameter("proDate");
-			String proPhoto=multi.getFilesystemName("proPhoto");
+			String proPhoto=ContextPath+"/img/"+multi.getFilesystemName("proPhoto");
 			String preview=multi.getParameter("preview");
 			System.out.println(TAG+"preview : "+ preview);
 			String proContent=multi.getParameter("proContent");

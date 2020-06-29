@@ -13,13 +13,13 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class ProUpdateProcAction implements Action {
-	private static final String TAG="ProUpdateProcAction : ";
+	private static final String TAG = "ProUpdateProcAction : ";
 
-	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. 업로드할 파일의 경로를 지정하고, 받아와야할 request 값을 cos 라이브러리로 불러옴
-		String realPath = request.getServletContext().getRealPath("upload");
+		String realPath = request.getServletContext().getRealPath("img");
+		String ContextPath = request.getServletContext().getContextPath();
 
 		try {
 			MultipartRequest multi = new MultipartRequest(request, realPath, 1024 * 1024 * 5, "UTF-8",
@@ -28,10 +28,11 @@ public class ProUpdateProcAction implements Action {
 			// 유효성 검사
 			if (multi.getParameter("proname").equals("") || multi.getParameter("proname").equals(null)
 					|| multi.getParameter("proPrice").equals("") || multi.getParameter("proPrice").equals(null)
-					|| multi.getParameter("proSale").equals("") || multi.getParameter("proSale").equals(null)
 					|| multi.getParameter("prokind").equals("") || multi.getParameter("prokind").equals(null)
-					|| multi.getFilesystemName("proPhoto").equals("") || multi.getFilesystemName("proPhoto").equals(null)
-					|| multi.getFilesystemName("preview").equals("") || multi.getFilesystemName("preview").equals(null)
+					|| multi.getParameter("proStock").equals("") || multi.getParameter("proStock").equals(null)
+					|| multi.getFilesystemName("proPhoto").equals("")
+					|| multi.getFilesystemName("proPhoto").equals(null)
+					|| multi.getParameter("preview").equals("") || multi.getParameter("preview").equals(null)
 					|| multi.getParameter("proContent").equals("") || multi.getParameter("proContent").equals(null)) {
 
 				Script.back("빈 값이 있습니다. 채워주세요 ^^", response);
@@ -52,28 +53,26 @@ public class ProUpdateProcAction implements Action {
 			String prokind = multi.getParameter("prokind");
 			int proStock = Integer.parseInt(multi.getParameter("proStock"));
 			String proDate = multi.getParameter("proDate");
-			String proPhoto = multi.getFilesystemName("proPhoto");
-			String preview = multi.getFilesystemName("preview");
+			String proPhoto = ContextPath+ "/img/" + multi.getFilesystemName("proPhoto");
+			String preview = multi.getParameter("preview");
 			String proContent = multi.getParameter("proContent");
 
-			
-			//3. 데이터베이스에 변수 넣어서 업데이트 실행
-			AdminRepository adminRepository=AdminRepository.getInstance();
-			int result=adminRepository.productUpdate(proname, proPrice, proSale, prokind, proStock, proDate, proPhoto, preview, proContent, proId);
-			
-			//4. 결과값에 따라, 수정이 되었으면 리스트로 돌려놓고, 수정이 되지 않을 시 스크립트백
-			if(result==1) {
-				Script.href("수정이 반영되었습니다","/DailyT/admin?cmd=prolist",response);
-				
-			}else {
+			// 3. 데이터베이스에 변수 넣어서 업데이트 실행
+			AdminRepository adminRepository = AdminRepository.getInstance();
+			int result = adminRepository.productUpdate(proname, proPrice, proSale, prokind, proStock, proDate, proPhoto,
+					preview, proContent, proId);
+
+			// 4. 결과값에 따라, 수정이 되었으면 리스트로 돌려놓고, 수정이 되지 않을 시 스크립트백
+			if (result == 1) {
+				Script.href("수정이 반영되었습니다", "/DailyT/admin?cmd=prolist", response);
+
+			} else {
 				Script.back("수정이 실패했습니다.", response);
 			}
-			
-			
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println(TAG+"로직 오류");
+			System.out.println(TAG + "로직 오류");
 		}
 	}
 }

@@ -225,7 +225,7 @@ public class ClientRepository {
 	}
 	
 	public List<Product> FindAllProduct() {
-		final String SQL="select proid,proname,proprice,prosale,prokind,prostock,prodate from product";
+		final String SQL="select proid,proname,proprice,prosale,prokind,prostock,prodate,proPhoto,preview from product";
 		List<Product> products=new ArrayList<>();
 		Product product=null;
 		try {
@@ -242,6 +242,107 @@ public class ClientRepository {
 						.prokind(rs.getString("prokind"))
 						.proStock(rs.getInt("proStock"))
 						.proDate(rs.getString("proDate"))
+						.proPhoto(rs.getString("proPhoto"))
+						.preview(rs.getString("preview"))
+						.build();
+				products.add(product);
+			}
+			
+			return products;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG+"FindAllProduct : "+e.getMessage());
+		}
+		return null;
+	}
+	
+	public List<Product> FindBlackTeaProduct() {
+		final String SQL="select proid,proname,proprice,prosale,prokind,prostock,prodate,proPhoto,preview from product where prokind='홍차'";
+		List<Product> products=new ArrayList<>();
+		Product product=null;
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				product=Product.builder()
+						.proId(rs.getInt("proid"))
+						.proName(rs.getString("proname"))
+						.proPrice(rs.getInt("proPrice"))
+						.proSale(rs.getInt("proSale"))
+						.prokind(rs.getString("prokind"))
+						.proStock(rs.getInt("proStock"))
+						.proDate(rs.getString("proDate"))
+						.proPhoto(rs.getString("proPhoto"))
+						.preview(rs.getString("preview"))
+						.build();
+				products.add(product);
+			}
+			
+			return products;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG+"FindAllProduct : "+e.getMessage());
+		}
+		return null;
+	}
+	
+	public List<Product> FindGreenTeaProduct() {
+		final String SQL="select proid,proname,proprice,prosale,prokind,prostock,prodate,proPhoto,preview from product where prokind='녹차'";
+		List<Product> products=new ArrayList<>();
+		Product product=null;
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				product=Product.builder()
+						.proId(rs.getInt("proid"))
+						.proName(rs.getString("proname"))
+						.proPrice(rs.getInt("proPrice"))
+						.proSale(rs.getInt("proSale"))
+						.prokind(rs.getString("prokind"))
+						.proStock(rs.getInt("proStock"))
+						.proDate(rs.getString("proDate"))
+						.proPhoto(rs.getString("proPhoto"))
+						.preview(rs.getString("preview"))
+						.build();
+				products.add(product);
+			}
+			
+			return products;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG+"FindAllProduct : "+e.getMessage());
+		}
+		return null;
+	}
+	
+	public List<Product> FindWhiteTeaProduct() {
+		final String SQL="select proid,proname,proprice,prosale,prokind,prostock,prodate,proPhoto,preview from product where prokind='백차'";
+		List<Product> products=new ArrayList<>();
+		Product product=null;
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				product=Product.builder()
+						.proId(rs.getInt("proid"))
+						.proName(rs.getString("proname"))
+						.proPrice(rs.getInt("proPrice"))
+						.proSale(rs.getInt("proSale"))
+						.prokind(rs.getString("prokind"))
+						.proStock(rs.getInt("proStock"))
+						.proDate(rs.getString("proDate"))
+						.proPhoto(rs.getString("proPhoto"))
+						.preview(rs.getString("preview"))
 						.build();
 				products.add(product);
 			}
