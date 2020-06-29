@@ -87,7 +87,6 @@ public class AdminRepository {
 			pstmt.setInt(1, subId);
 			
 			int result=pstmt.executeUpdate();
-			System.out.println(result);
 			return result;
 			
 		} catch (Exception e) {

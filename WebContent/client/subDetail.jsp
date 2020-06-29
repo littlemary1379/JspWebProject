@@ -95,7 +95,7 @@
 
 		<div class="form-group d-flex">
 			<textarea class="form-control" rows="5" id="subContent"></textarea>
-			<button type="button" onclick="writeSubReply(${sessionScope.principal.custid},${subProduct.subId})" class="col-sm-2">등록하기</button>
+			<button type="button" onclick="writeSubReply(${subProduct.subId},${sessionScope.principal.custid})" class="col-sm-2">등록하기</button>
 		</div>
 
 	</form>
@@ -106,34 +106,39 @@
 <div class="container">
 	<div class="subReply-total" id="subReply-total">
 		<c:forEach items="${subReplies }" var="subReplies">
-			<div class="subReply-nickname d-flex justify-content-between">
-				<p>${subReplies.nickname } /
-					<c:choose>
-					<c:when test="${subReplies.score eq 1}">
+			<div id="subReply-${subReplies.replyid }">
+				<div class="subReply-nickname d-flex justify-content-between">
+					<p>${subReplies.nickname }
+						/
+						<c:choose>
+							<c:when test="${subReplies.score eq 1}">
 						★☆☆☆☆
 					</c:when>
-					<c:when test="${subReplies.score eq 2}">
+							<c:when test="${subReplies.score eq 2}">
 						★★☆☆☆
 					</c:when>
-					<c:when test="${subReplies.score eq 3}">
+							<c:when test="${subReplies.score eq 3}">
 						★★★☆☆
 					</c:when>
-					<c:when test="${subReplies.score eq 4}">
+							<c:when test="${subReplies.score eq 4}">
 						★★★★☆
 					</c:when>
-					<c:when test="${subReplies.score eq 5}">
+							<c:when test="${subReplies.score eq 5}">
 						★★★★★
 					</c:when>
-					</c:choose>
-				</p>
-				<c:if test="${sessionScope.principal.custid eq subReplies.custid }">
-					<p><i class="fas fa fa-trash"></i></p>
-				</c:if>
+						</c:choose>
+					</p>
+					<c:if test="${sessionScope.principal.custid eq subReplies.custid }">
+						<p>
+							<i onclick="deleteSubReply(${subReplies.replyid });" class="fas fa fa-trash"></i>
+						</p>
+					</c:if>
+				</div>
+				<div class="subReply-content">
+					<p>${subReplies.content }</p>
+				</div>
+				<hr />
 			</div>
-			<div class="subReply-content">
-				<p>${subReplies.content }</p>
-			</div>
-			<hr />
 		</c:forEach>
 
 

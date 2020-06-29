@@ -11,6 +11,7 @@ import com.dailyT.action.Action;
 import com.dailyT.action.client.SubListAction;
 import com.dailyT.action.client.SubListChangeAction;
 import com.dailyT.action.client.WriteSubReplyAction;
+import com.dailyT.action.client.DeleteSubReplyAction;
 import com.dailyT.action.client.SubDetailAction;
 import com.dailyT.action.index.HomeAction;
 
@@ -54,6 +55,8 @@ public class ClientController extends HttpServlet {
 			return new SubDetailAction();
 		}else if(cmd.equals("writeSubReply")) {
 			return new WriteSubReplyAction();
+		}else if(cmd.equals("deleteSubReply")) {
+			return new DeleteSubReplyAction();
 		}
 		return null;
 	}

@@ -30,6 +30,26 @@ public class ClientRepository {
 	private ResultSet rs=null;
 	
 	
+	
+	public int deleteSubReply(int replyid) {
+		final String SQL="delete from subreply where replyid=?";
+
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			pstmt.setInt(1, replyid);
+			
+			int result=pstmt.executeUpdate();
+			System.out.println(result);
+			return result;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG+"deleteSubReply : "+e.getMessage());
+		}
+		return -1;
+	}
+	
 	public List<subReplyView> findSubReply(int subid) {
 		final String SQL="select replyid,subreply.custid,nickname,score,content " + 
 				"from subreply,customer " + 
@@ -348,119 +368,5 @@ public class ClientRepository {
 	}
 	
 
-	
-	public int resetPW(String password, String userID) {
-		final String SQL="update customer set password=? where userid=?";
-
-		try {
-			conn=DBconnection.DBconn();
-			pstmt=conn.prepareStatement(SQL);
-			pstmt.setString(1, password);
-			pstmt.setString(2, userID);
-			int result=pstmt.executeUpdate();
-			System.out.println(result);
-			return result;
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		return -1;
-	}
-	
-	public int userIDCheck(String userID) {
-		final String SQL="select count(userID) from customer where userid=?";
-		int result=0;
-		try {
-			conn=DBconnection.DBconn();
-			pstmt=conn.prepareStatement(SQL);
-			pstmt.setString(1, userID);
-			rs=pstmt.executeQuery();
-			
-			if (rs.next()) {
-				result=rs.getInt(1);
-			}
-			return result;
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		return -1;
-	}
-	
-	public String FindIDByUsernameAndEmail(String username,String email) {
-		final String SQL="select userID from customer where username=? and email=?";
-		String result=null;
-		try {
-			conn=DBconnection.DBconn();
-			pstmt=conn.prepareStatement(SQL);
-			pstmt.setString(1, username);
-			pstmt.setString(2, email);
-			rs=pstmt.executeQuery();
-			
-			if (rs.next()) {
-				result=rs.getString("userID");
-			}
-			return result;
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		return null;
-	}
-	
-	public int FindIDByUserIDandUsernameAndEmail(String username, String userID, String email) {
-		final String SQL="select count(*) from customer where username=? and userID=? and email=?";
-		int result=0;
-		try {
-			conn=DBconnection.DBconn();
-			pstmt=conn.prepareStatement(SQL);
-			pstmt.setString(1, username);
-			pstmt.setString(2, userID);
-			pstmt.setString(3, email);
-			rs=pstmt.executeQuery();
-			
-			if (rs.next()) {
-				result=rs.getInt(1);
-			}
-			return result;
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		return 0;
-	}
-	
-	public Customer findByUserIDandPassword(String userID,String password) {
-		final String SQL="select custid,userid,username,nickname,email,address,cellphone,userrole " + 
-						"from customer " + 
-						"where userid=? and password=?";
-		Customer cust=null;
-		try {
-			conn=DBconnection.DBconn();
-			pstmt=conn.prepareStatement(SQL);
-			pstmt.setString(1, userID);
-			pstmt.setString(2, password);
-			rs=pstmt.executeQuery();
-			
-			while(rs.next()) {
-				cust=Customer.builder()
-					.custid(rs.getInt("custid"))
-					.userId(rs.getString("userid"))
-					.username(rs.getString("username"))
-					.nickname(rs.getString("nickname"))
-					.email(rs.getString("email"))
-					.address(rs.getString("address"))
-					.cellphone(rs.getString("cellphone"))
-					.userrole(rs.getString("userrole"))
-					.build();
-			}
-			return cust;
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println(TAG+"findByUserIDandPassword : "+e.getMessage());
-		}
-		return null;
-		
-	}
 	
 }
