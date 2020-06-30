@@ -12,6 +12,7 @@ import com.dailyT.db.DBconnection;
 import com.dailyT.dto.proReplyView;
 import com.dailyT.dto.subReplyView;
 import com.dailyT.model.Customer;
+import com.dailyT.model.Event;
 import com.dailyT.model.ProReply;
 import com.dailyT.model.Product;
 import com.dailyT.model.SubProduct;
@@ -457,6 +458,36 @@ public class ClientRepository {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println(TAG+"FindAllToolProduct : "+e.getMessage());
+		}
+		return null;
+	}
+	
+	public List<Event> FindAllEvent() {
+		final String SQL="select eventId,eventName,eventStartDate,eventFinishDate,eventBanner,eventPreview from eventlist";
+		List<Event> events=new ArrayList<>();
+		Event event=null;
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				event=Event.builder()
+						.eventId(rs.getInt("eventid"))
+						.eventName(rs.getString("eventname"))
+						.eventStartDate(rs.getString("eventstartdate"))
+						.eventFinishDate(rs.getString("eventfinishdate"))
+						.eventBanner(rs.getString("eventBanner"))
+						.eventPreview(rs.getString("eventpreview"))
+						.build();
+				events.add(event);
+			}
+			
+			return events;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG+"FindAllEvent : "+e.getMessage());
 		}
 		return null;
 	}

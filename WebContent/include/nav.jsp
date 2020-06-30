@@ -83,7 +83,7 @@
 							<li><a class="detail-nav-link" href="/DailyT/client?cmd=toollist&category=package">스타터팩</a></li>
 							<li><a class="detail-nav-link" href="/DailyT/client?cmd=toollist&category=tool">다구</a></li>
 						</ul></li>
-					<li class="nav-item  col-md-3"><a class="nav-link" href="#">이벤트</a>
+					<li class="nav-item  col-md-3"><a class="nav-link" href="/DailyT/client?cmd=eventlist">이벤트</a>
 					</li>
 				</ul>
 			</nav>
