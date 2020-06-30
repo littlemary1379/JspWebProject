@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.dailyT.db.DBconnection;
 import com.dailyT.model.Customer;
+import com.dailyT.model.Event;
 import com.dailyT.model.Product;
 import com.dailyT.model.SubProduct;
 
@@ -74,6 +75,25 @@ public class AdminRepository {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println(TAG+"deletePro : "+e.getMessage());
+		}
+		return -1;
+	}
+	
+	public int deleteEvent(int eventId) {
+		final String SQL="delete from eventlist where eventid=?";
+
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			pstmt.setInt(1, eventId);
+			
+			int result=pstmt.executeUpdate();
+			System.out.println(result);
+			return result;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG+"deleteEvent : "+e.getMessage());
 		}
 		return -1;
 	}
@@ -187,6 +207,34 @@ public class AdminRepository {
 		return null;
 	}
 	
+	public List<Event> FindAllEvent() {
+		final String SQL="select eventid,eventname,eventstartdate,eventfinishdate from eventlist";
+		List<Event> events=new ArrayList<>();
+		Event event=null;
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				event=Event.builder()
+						.eventId(rs.getInt("eventid"))
+						.eventName(rs.getString("eventname"))
+						.eventStartDate(rs.getString("eventstartdate"))
+						.eventFinishDate(rs.getString("eventfinishdate"))
+						.build();
+				events.add(event);
+			}
+			
+			return events;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG+"FindAllEvent : "+e.getMessage());
+		}
+		return null;
+	}
+	
 	public int eventSave(String eventname, String eventStartDate,String eventFinishDate, String eventBanner,String eventpreview,String eventContent) {
 		final String SQL="insert into eventlist (eventid,eventname,eventStartDate,eventFinishDate,eventBanner,eventpreview,eventContent) " + 
 				"VALUES (eventlist_SEQ.nextval,?,?,?,?,?,?)";
@@ -203,7 +251,7 @@ public class AdminRepository {
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println(TAG+"proSave : "+e.getMessage());
+			System.out.println(TAG+"eventSave : "+e.getMessage());
 		}
 		return -1;
 	}
