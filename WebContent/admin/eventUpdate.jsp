@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../include/adminNav.jsp"%>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-
 
 <!-- nav에 들어가면 인식을 못해서 빼둔 링크. 부가기능용(섬머노트, datepicker)용 -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
@@ -16,80 +14,41 @@
 <!--등록에 필요한 정보 : 상품 이름, 사진, 가격, 상품 세부내역-->
 
 <div class="container">
-<h4>단품 수정</h4>
-	<form action="/DailyT/admin?cmd=proUpdateProc" method="post" enctype="multipart/form-data">
+<h4>이벤트 수정</h4>
+	<form action="/DailyT/admin?cmd=eventUpdateProc" method="post" enctype="multipart/form-data">
 		<!-- Id값 들고 가기 위한 hidden -->
 		<div class="form-group">
-			<input type="hidden" class="form-control" id="eventId" name="eventId" value="${product.proId }">
+			<input type="hidden" class="form-control" id="eventId" name="eventId" value="${event.eventId }">
 		</div>
 		<!-- hidden 종료 -->
 		<div class="form-group">
-			<label for="proname">상품 이름 : </label> 
-			<input type="text" class="form-control" id="proname" name="proname" value="${product.proName }">
+			<label for="proname">이벤트 이름 : </label> 
+			<input type="text" class="form-control" id="eventname" name="eventname" value="${event.eventName }">
 		</div>
+		
 		<div class="form-group">
-			<label for="proPrice">상품 가격 : </label> 
-			<input type="text" class="form-control" id="proPrice" name="proPrice" value="${product.proPrice }">
+			<label for="proDate">이벤트 시작 : </label> 
+			<input type="text" class="form-control" id="datepicker" name="eventStartDate" value="${event.eventStartDate }">
 		</div>
+		
 		<div class="form-group">
-			<label for="prosale">할인율 : </label> 
-			<input type="text" class="form-control" id="proSale" name="proSale" value="${product.proSale }">
-		</div>		
-		<div class="form-group">
-			<label for="prokind">상품 종류 : </label>
-			<div class="form-group"> 
-				<select class="form-control" id="prokind" name="prokind">
-					<c:choose>
-						<c:when test="${product.prokind  eq '홍차'}">
-							<option selected>홍차</option>
-							<option>백차</option>
-							<option>녹차</option>
-							<option>다구</option>
-						</c:when>
-						<c:when test="${product.prokind  eq '백차'}">
-							<option>홍차</option>
-							<option selected>백차</option>
-							<option>녹차</option>
-							<option>다구</option>
-						</c:when>
-						<c:when test="${product.prokind  eq '녹차'}">
-							<option>홍차</option>
-							<option>백차</option>
-							<option selected>녹차</option>
-							<option>다구</option>
-						</c:when>
-						<c:when test="${product.prokind  eq '다구'}">
-							<option>홍차</option>
-							<option>백차</option>
-							<option>녹차</option>
-							<option selected>다구</option>
-						</c:when>
-					</c:choose>
-				</select>
-			</div>
+			<label for="proDate">이벤트 종료 : </label> 
+			<input type="text" class="form-control" id="datepicker2" name="eventFinishDate" value="${event.eventFinishDate }">
 		</div>
-		<div class="form-group">
-			<label for="proStock">재고 : </label> 
-			<input type="text" class="form-control" id="proStock" name="proStock" value="${product.proStock }">
-		</div>
-		<div class="form-group">
-			<label for="proDate">게시 종료 : </label> 
-			<input type="text" class="form-control" id="datepicker" name="proDate">
-		</div>
+		
 		<div class="form-group bg-light">
-			<label for="subPhoto">대표 사진 : </label>
-			<label for="subPhoto"><b>사진을 다시 넣어주세요.</b></label> 			 
-			<input type="file" class="form-control" name="proPhoto" id="proPhoto" />
+			<label for="subPhoto">배너 : </label> 
+			<input type="file" class="form-control" name="eventBanner" id="eventBanner" />
 		</div>
 		<div class="form-group">
-			<label for="preview">미리보기:</label>
-			<textarea class="form-control" rows="5" id="preview" name="preview">${product.preview }</textarea>
-		</div>		
+			<label for="preview">내용 미리보기:</label>
+			<textarea class="form-control" rows="5" id="eventpreview" name="eventpreview">${event.eventPreview }</textarea>
+		</div>
 		<div class="form-group">
 			<label for="content">세부 내용:</label>
-			<textarea class="form-control" rows="5" id="summernote" name="proContent">${product.proContent }</textarea>
+			<textarea class="form-control" rows="5" id="summernote" name="eventContent">${event.eventContent }</textarea>
 		</div>
-		<button type="submit" class="btn btn-primary">상품 수정</button>
+		<button type="submit" class="btn btn-primary">이벤트 수정</button>
 	</form>
 	<!-- 등록 폼 종료 -->
 
@@ -102,17 +61,25 @@
 
 		var date = null;
 		$(function() {
-			
-			$("#datepicker").datepicker({	
-					onSelect : function(picker) {
+			$("#datepicker").datepicker({
+				onSelect : function(picker) {
 					date = $("#datepicker").val();
-					console.log(date);
-				}
-			});
-			$("#datepicker").datepicker('setDate',$.datepicker.parseDate( 'mm/dd/yy', "${product.proDate }",'' ));
-				
+					console.log(date)
+				},
+				format : "yyyy-mm-dd",
+				language : "ko"
+			})
+			
+			$("#datepicker2").datepicker({
+				onSelect : function(picker) {
+					date = $("#datepicker").val();
+					console.log(date)
+				},
+				format : "yyyy-mm-dd",
+				language : "ko"
+			})
+
 		});
-		
 	</script>
 	<!-- 스크립트 종료 -->
 

@@ -23,7 +23,7 @@ public class SubUpdateAction implements Action {
 		System.out.println(subId);
 		
 		AdminRepository adminRepository=AdminRepository.getInstance();
-		SubProduct subproduct=adminRepository.findSubProductByProID(subId);
+		SubProduct subproduct=adminRepository.findSubProductBySubID(subId);
 		
 		if(subproduct!=null) {
 			HttpSession session=request.getSession();

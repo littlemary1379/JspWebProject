@@ -116,7 +116,39 @@ public class AdminRepository {
 		return -1;
 	}
 	
-	public SubProduct findSubProductByProID(int subId) {
+	public Product findProductByProID(int proId) {
+		final String SQL="select proId, proname,proPrice,prosale,prokind,proStock,proDate,proPhoto,preview,proContent from product where proId=?";
+
+		Product product=null;
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			pstmt.setInt(1, proId);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				product=Product.builder()
+						.proId(rs.getInt("proId"))
+						.proName(rs.getString("proname"))
+						.proPrice(rs.getInt("proPrice"))
+						.proSale(rs.getInt("prosale"))
+						.prokind(rs.getString("prokind"))
+						.proStock(rs.getInt("prostock"))
+						.proDate(rs.getString("prodate"))
+						.proPhoto(rs.getString("prophoto"))
+						.preview(rs.getString("preview"))
+						.proContent(rs.getString("procontent"))
+						.build();
+				return product;
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return null;
+	}
+	
+	public SubProduct findSubProductBySubID(int subId) {
 		final String SQL="select subId, subname,subPrice,subsale,subDate,subPhoto,subPreview,subContent from subproduct where subId=?";
 
 		SubProduct subproduct=null;
@@ -143,6 +175,35 @@ public class AdminRepository {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println(TAG+"findSubProductByProID : "+e.getMessage());
+		}
+		return null;
+	}
+	
+	public Event findEventByEventId(int eventId) {
+		final String SQL="select eventid,eventname,eventstartdate,eventfinishdate,eventpreview,eventcontent from eventlist where eventId=?";
+
+		Event event=null;
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			pstmt.setInt(1, eventId);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				event=Event.builder()
+						.eventId(rs.getInt("eventid"))
+						.eventName(rs.getString("eventname"))
+						.eventStartDate(rs.getString("eventstartdate"))
+						.eventFinishDate(rs.getString("eventfinishdate"))
+						.eventPreview(rs.getString("eventpreview"))
+						.eventContent(rs.getString("eventcontent"))
+						.build();
+				return event;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG+"findEventByEventId : "+e.getMessage());
 		}
 		return null;
 	}
@@ -331,6 +392,32 @@ public class AdminRepository {
 		return -1;
 	}
 	
+	public int eventUpdate(String eventname, String eventStartDate,String eventFinishDate, String eventBanner,String eventpreview,String eventContent, int eventId) {
+		final String SQL="update eventlist set eventname=?, eventStartDate=?, eventFinishDate=?, eventBanner=?, eventpreview=?, eventContent=? where eventid=?";
+
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			pstmt.setString(1, eventname);
+			pstmt.setString(2, eventStartDate);
+			pstmt.setString(3, eventFinishDate);
+			pstmt.setString(4, eventBanner);
+			pstmt.setString(5, eventpreview);
+			pstmt.setString(6, eventContent);
+			pstmt.setInt(7, eventId);
+			
+			
+			int result=pstmt.executeUpdate();
+			System.out.println(result);
+			return result;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG+"eventUpdate : "+e.getMessage());
+		
+		}
+		return -1;
+	}
+	
 	public int subproductUpdate(String subName,int subPrice, int subSale, String subDate, String subPhoto,String subPreview,String subContent, int subid) {
 		final String SQL="update subproduct set subName=?, subPrice=?, subSale=?, subDate=?, subPhoto=?, subPreview=?,subContent=? where subid=?";
 
@@ -357,37 +444,6 @@ public class AdminRepository {
 		}
 		return -1;
 	}
-	
-	public Product findProductByProID(int proId) {
-		final String SQL="select proId, proname,proPrice,prosale,prokind,proStock,proDate,proPhoto,preview,proContent from product where proId=?";
 
-		Product product=null;
-		try {
-			conn=DBconnection.DBconn();
-			pstmt=conn.prepareStatement(SQL);
-			pstmt.setInt(1, proId);
-			rs=pstmt.executeQuery();
-			
-			while(rs.next()) {
-				product=Product.builder()
-						.proId(rs.getInt("proId"))
-						.proName(rs.getString("proname"))
-						.proPrice(rs.getInt("proPrice"))
-						.proSale(rs.getInt("prosale"))
-						.prokind(rs.getString("prokind"))
-						.proStock(rs.getInt("prostock"))
-						.proDate(rs.getString("prodate"))
-						.proPhoto(rs.getString("prophoto"))
-						.preview(rs.getString("preview"))
-						.proContent(rs.getString("procontent"))
-						.build();
-				return product;
-			}
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		return null;
-	}
 
 }
