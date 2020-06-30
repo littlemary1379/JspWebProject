@@ -9,8 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.dailyT.db.DBconnection;
+import com.dailyT.dto.proReplyView;
 import com.dailyT.dto.subReplyView;
 import com.dailyT.model.Customer;
+import com.dailyT.model.ProReply;
 import com.dailyT.model.Product;
 import com.dailyT.model.SubProduct;
 import com.dailyT.model.SubReply;
@@ -219,7 +221,108 @@ public class ClientRepository {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println(TAG+"FindAllSubProduct : "+e.getMessage());
+			System.out.println(TAG+"FindSeasonSubProduct : "+e.getMessage());
+		}
+		return null;
+	}
+	
+	public int deleteProReply(int replyid) {
+		final String SQL="delete from proreply where replyid=?";
+
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			pstmt.setInt(1, replyid);
+			
+			int result=pstmt.executeUpdate();
+			System.out.println(result);
+			return result;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG+"deleteProReply : "+e.getMessage());
+		}
+		return -1;
+	}
+	
+	public int proReplySave(ProReply proReply) {
+		final String SQL="insert into proReply (replyid,custid,proid,score,content) " + 
+				"VALUES (proreply_SEQ.nextval,?,?,?,?)";
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			pstmt.setInt(1, proReply.getCustid());
+			pstmt.setInt(2, proReply.getProid());
+			pstmt.setInt(3, proReply.getScore());
+			pstmt.setString(4, proReply.getContent());
+			
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(TAG+"proReplySave : "+e.getMessage());
+		}
+		return -1;
+	}
+	
+	public List<proReplyView> findProReply(int proid) {
+		final String SQL="select replyid,proreply.custid,nickname,score,content " + 
+				"from proreply,customer " + 
+				"where proreply.custid=customer.custid and proid=? order by replyid desc";
+		List<proReplyView> proReplies=new ArrayList<>();
+		proReplyView proReply=null;
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			pstmt.setInt(1, proid);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				proReply=proReplyView.builder()
+						.replyid(rs.getInt("replyid"))
+						.custid(rs.getInt("custid"))
+						.nickname(rs.getString("nickname"))
+						.score(rs.getInt("score"))
+						.content(rs.getString("content"))
+						.build();
+				proReplies.add(proReply);
+			}
+			
+			return proReplies;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(TAG+"findSubReply : "+e.getMessage());
+		}
+		return null;
+	}
+	
+	public Product findProductByProID(int proId) {
+		final String SQL="select proId, proname,proPrice,prosale,prokind,proStock,proDate,proPhoto,preview,proContent from product where proId=?";
+
+		Product product=null;
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			pstmt.setInt(1, proId);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				product=Product.builder()
+						.proId(rs.getInt("proId"))
+						.proName(rs.getString("proname"))
+						.proPrice(rs.getInt("proPrice"))
+						.proSale(rs.getInt("prosale"))
+						.prokind(rs.getString("prokind"))
+						.proStock(rs.getInt("prostock"))
+						.proDate(rs.getString("prodate"))
+						.proPhoto(rs.getString("prophoto"))
+						.preview(rs.getString("preview"))
+						.proContent(rs.getString("procontent"))
+						.build();
+				return product;
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
 		return null;
 	}
@@ -436,37 +539,7 @@ public class ClientRepository {
 		return -1;
 	}
 	
-	public Product findProductByProID(int proId) {
-		final String SQL="select proId, proname,proPrice,prosale,prokind,proStock,proDate,proPhoto,preview,proContent from product where proId=?";
 
-		Product product=null;
-		try {
-			conn=DBconnection.DBconn();
-			pstmt=conn.prepareStatement(SQL);
-			pstmt.setInt(1, proId);
-			rs=pstmt.executeQuery();
-			
-			while(rs.next()) {
-				product=Product.builder()
-						.proId(rs.getInt("proId"))
-						.proName(rs.getString("proname"))
-						.proPrice(rs.getInt("proPrice"))
-						.proSale(rs.getInt("prosale"))
-						.prokind(rs.getString("prokind"))
-						.proStock(rs.getInt("prostock"))
-						.proDate(rs.getString("prodate"))
-						.proPhoto(rs.getString("prophoto"))
-						.preview(rs.getString("preview"))
-						.proContent(rs.getString("procontent"))
-						.build();
-				return product;
-			}
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		return null;
-	}
 	
 
 	

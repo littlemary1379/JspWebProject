@@ -12,8 +12,11 @@ import com.dailyT.action.client.ProListAction;
 import com.dailyT.action.client.ProListChangeAction;
 import com.dailyT.action.client.SubListAction;
 import com.dailyT.action.client.SubListChangeAction;
+import com.dailyT.action.client.WriteProReplyAction;
 import com.dailyT.action.client.WriteSubReplyAction;
+import com.dailyT.action.client.DeleteProReplyAction;
 import com.dailyT.action.client.DeleteSubReplyAction;
+import com.dailyT.action.client.ProDetailAction;
 import com.dailyT.action.client.SubDetailAction;
 
 
@@ -62,6 +65,12 @@ public class ClientController extends HttpServlet {
 			return new ProListAction();
 		}else if(cmd.equals("prolistChange")) {
 			return new ProListChangeAction();
+		}else if(cmd.equals("proDetail")) {
+			return new ProDetailAction();
+		}else if(cmd.equals("writeProReply")) {
+			return new WriteProReplyAction();
+		}else if(cmd.equals("deleteProReply")) {
+			return new DeleteProReplyAction();
 		}
 		return null;
 	}
