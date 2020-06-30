@@ -1,4 +1,4 @@
-function listChange(season){
+function sublistChange(season){
 	$.ajax({
 		type:"post",
 		url:"/DailyT/client?cmd=sublistchange",

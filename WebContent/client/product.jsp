@@ -15,10 +15,10 @@
 
 	<!-- 카테고리별 버튼 -->
 	<div class="product-button d-flex">
-		<button onclick="listChange('전체');">전체</button>
-		<button onclick="listChange('홍차');">홍차</button>
-		<button onclick="listChange('녹차');">녹차</button>
-		<button onclick="listChange('백차');">백차</button>
+		<button onclick="prolistChange('전체');">전체</button>
+		<button onclick="prolistChange('홍차');">홍차</button>
+		<button onclick="prolistChange('녹차');">녹차</button>
+		<button onclick="prolistChange('백차');">백차</button>
 
 	</div>
 	<!-- 버튼 종료 -->
@@ -31,7 +31,7 @@
 		<hr />
 
 		<!-- 카테고리는 한 줄당 3개씩 -->
-		<div class="3product-category d-flex">
+		<div id="products-category" class="3product-category d-flex">
 			<c:forEach items="${products }" var="products">
 				<div class="card" style="width: 400px">
 					<img class="card-img-top" src="${products.proPhoto }" alt="Card image" style="width: 100%">
@@ -51,3 +51,5 @@
 
 </div>
 <!-- 제품 전시 종료 -->
+
+<script src="/DailyT/js/productlist.js"></script>

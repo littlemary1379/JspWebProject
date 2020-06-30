@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.dailyT.action.Action;
 import com.dailyT.action.client.ProListAction;
+import com.dailyT.action.client.ProListChangeAction;
 import com.dailyT.action.client.SubListAction;
 import com.dailyT.action.client.SubListChangeAction;
 import com.dailyT.action.client.WriteSubReplyAction;
@@ -59,6 +60,8 @@ public class ClientController extends HttpServlet {
 			return new DeleteSubReplyAction();
 		}else if(cmd.equals("prolist")) {
 			return new ProListAction();
+		}else if(cmd.equals("prolistChange")) {
+			return new ProListChangeAction();
 		}
 		return null;
 	}

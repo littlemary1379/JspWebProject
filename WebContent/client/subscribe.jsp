@@ -15,9 +15,9 @@
 	
 	<!-- 카테고리별 버튼 -->
 	<div class="subscribe-button d-flex">
-		<button onclick="listChange('전체');">구독 전체</button>
-		<button onclick="listChange('정기');">정기 구독</button>
-		<button onclick="listChange('시즌');">시즌 구독</button>
+		<button onclick="sublistChange('전체');">구독 전체</button>
+		<button onclick="sublistChange('정기');">정기 구독</button>
+		<button onclick="sublistChange('시즌');">시즌 구독</button>
 	</div>
 	<!-- 버튼 종료 -->
 	
