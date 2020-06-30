@@ -19,7 +19,7 @@ import com.dailyT.util.Script;
 import com.google.gson.Gson;
 
 public class ProListAction implements Action {
-	private static final String TAG="SubListAction : ";
+	private static final String TAG="ProListAction : ";
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -38,29 +38,29 @@ public class ProListAction implements Action {
 			
 		}else if(category.equals("blacktea")) {
 			System.out.println(TAG+category+" 값 확인됨.");
-			List<SubProduct> subProducts=clientRepository.FindOriginSubProduct();
+			List<Product> products=clientRepository.FindBlackTeaProduct();
 			
-			request.setAttribute("subProducts", subProducts);
+			request.setAttribute("products", products);
 			
-			RequestDispatcher dis = request.getRequestDispatcher("client/subscribe.jsp");
+			RequestDispatcher dis = request.getRequestDispatcher("client/product.jsp");
 			dis.forward(request, response);
 			
 		}else if(category.equals("greentea")) {
 			System.out.println(TAG+category+" 값 확인됨.");
-			List<SubProduct> subProducts=clientRepository.FindSeasonSubProduct();
+			List<Product> products=clientRepository.FindGreenTeaProduct();
 			
-			request.setAttribute("subProducts", subProducts);
+			request.setAttribute("products", products);
 			
-			RequestDispatcher dis = request.getRequestDispatcher("client/subscribe.jsp");
+			RequestDispatcher dis = request.getRequestDispatcher("client/product.jsp");
 			dis.forward(request, response);
 			
 		}else if(category.equals("whitetea")) {
 			System.out.println(TAG+category+" 값 확인됨.");
-			List<SubProduct> subProducts=clientRepository.FindSeasonSubProduct();
+			List<Product> products=clientRepository.FindWhiteTeaProduct();
 			
-			request.setAttribute("subProducts", subProducts);
+			request.setAttribute("products", products);
 			
-			RequestDispatcher dis = request.getRequestDispatcher("client/subscribe.jsp");
+			RequestDispatcher dis = request.getRequestDispatcher("client/product.jsp");
 			dis.forward(request, response);
 			
 		}

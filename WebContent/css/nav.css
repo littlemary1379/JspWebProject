@@ -78,3 +78,14 @@ z-index: 2;
 	font-weight: normal;
 	color:black;
 }
+
+.nav2 {
+	text-align: center;
+	padding: 10px 0px;
+	width: 100%;
+}
+
+.nav2Fixed {
+	position: fixed;
+	top: 0px;
+}

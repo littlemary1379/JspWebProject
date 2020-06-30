@@ -42,7 +42,7 @@ $(document).ready(function(){
 		});  
 	});  
   
-});  
+}); 
 
 $( document ).ready( function() {
     var jbOffset = $( '.nav2' ).offset();
