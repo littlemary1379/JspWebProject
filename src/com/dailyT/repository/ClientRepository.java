@@ -327,8 +327,8 @@ public class ClientRepository {
 		return null;
 	}
 	
-	public List<Product> FindAllProduct() {
-		final String SQL="select proid,proname,proprice,prosale,prokind,prostock,prodate,proPhoto,preview from product";
+	public List<Product> FindAllTeaProduct() {
+		final String SQL="select proid,proname,proprice,prosale,prokind,prostock,prodate,proPhoto,preview from product where prokind in('홍차','백차','녹차')";
 		List<Product> products=new ArrayList<>();
 		Product product=null;
 		try {
@@ -360,8 +360,76 @@ public class ClientRepository {
 		return null;
 	}
 	
-	public List<Product> FindBlackTeaProduct() {
-		final String SQL="select proid,proname,proprice,prosale,prokind,prostock,prodate,proPhoto,preview from product where prokind='홍차'";
+	public List<Product> FindSelectTeaProduct(String select) {
+		final String SQL="select proid,proname,proprice,prosale,prokind,prostock,prodate,proPhoto,preview from product where prokind=?";
+		List<Product> products=new ArrayList<>();
+		Product product=null;
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			pstmt.setString(1, select);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				product=Product.builder()
+						.proId(rs.getInt("proid"))
+						.proName(rs.getString("proname"))
+						.proPrice(rs.getInt("proPrice"))
+						.proSale(rs.getInt("proSale"))
+						.prokind(rs.getString("prokind"))
+						.proStock(rs.getInt("proStock"))
+						.proDate(rs.getString("proDate"))
+						.proPhoto(rs.getString("proPhoto"))
+						.preview(rs.getString("preview"))
+						.build();
+				products.add(product);
+			}
+			
+			return products;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG+"FindSelectTeaProduct : "+e.getMessage());
+		}
+		return null;
+	}
+
+	public List<Product> FindSelectToolProduct(String select) {
+		final String SQL="select proid,proname,proprice,prosale,prokind,prostock,prodate,proPhoto,preview from product where prokind=?";
+		List<Product> products=new ArrayList<>();
+		Product product=null;
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			pstmt.setString(1, select);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				product=Product.builder()
+						.proId(rs.getInt("proid"))
+						.proName(rs.getString("proname"))
+						.proPrice(rs.getInt("proPrice"))
+						.proSale(rs.getInt("proSale"))
+						.prokind(rs.getString("prokind"))
+						.proStock(rs.getInt("proStock"))
+						.proDate(rs.getString("proDate"))
+						.proPhoto(rs.getString("proPhoto"))
+						.preview(rs.getString("preview"))
+						.build();
+				products.add(product);
+			}
+			
+			return products;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG+"FindSelectTeaProduct : "+e.getMessage());
+		}
+		return null;
+	}	
+	
+	public List<Product> FindAllToolProduct() {
+		final String SQL="select proid,proname,proprice,prosale,prokind,prostock,prodate,proPhoto,preview from product where prokind in('패키지','다구')";
 		List<Product> products=new ArrayList<>();
 		Product product=null;
 		try {
@@ -388,159 +456,8 @@ public class ClientRepository {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println(TAG+"FindAllProduct : "+e.getMessage());
+			System.out.println(TAG+"FindAllToolProduct : "+e.getMessage());
 		}
 		return null;
 	}
-	
-	public List<Product> FindGreenTeaProduct() {
-		final String SQL="select proid,proname,proprice,prosale,prokind,prostock,prodate,proPhoto,preview from product where prokind='녹차'";
-		List<Product> products=new ArrayList<>();
-		Product product=null;
-		try {
-			conn=DBconnection.DBconn();
-			pstmt=conn.prepareStatement(SQL);
-			rs=pstmt.executeQuery();
-			
-			while(rs.next()) {
-				product=Product.builder()
-						.proId(rs.getInt("proid"))
-						.proName(rs.getString("proname"))
-						.proPrice(rs.getInt("proPrice"))
-						.proSale(rs.getInt("proSale"))
-						.prokind(rs.getString("prokind"))
-						.proStock(rs.getInt("proStock"))
-						.proDate(rs.getString("proDate"))
-						.proPhoto(rs.getString("proPhoto"))
-						.preview(rs.getString("preview"))
-						.build();
-				products.add(product);
-			}
-			
-			return products;
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println(TAG+"FindAllProduct : "+e.getMessage());
-		}
-		return null;
-	}
-	
-	public List<Product> FindWhiteTeaProduct() {
-		final String SQL="select proid,proname,proprice,prosale,prokind,prostock,prodate,proPhoto,preview from product where prokind='백차'";
-		List<Product> products=new ArrayList<>();
-		Product product=null;
-		try {
-			conn=DBconnection.DBconn();
-			pstmt=conn.prepareStatement(SQL);
-			rs=pstmt.executeQuery();
-			
-			while(rs.next()) {
-				product=Product.builder()
-						.proId(rs.getInt("proid"))
-						.proName(rs.getString("proname"))
-						.proPrice(rs.getInt("proPrice"))
-						.proSale(rs.getInt("proSale"))
-						.prokind(rs.getString("prokind"))
-						.proStock(rs.getInt("proStock"))
-						.proDate(rs.getString("proDate"))
-						.proPhoto(rs.getString("proPhoto"))
-						.preview(rs.getString("preview"))
-						.build();
-				products.add(product);
-			}
-			
-			return products;
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println(TAG+"FindAllProduct : "+e.getMessage());
-		}
-		return null;
-	}
-	
-	public int proSave(String proname,int proPrice, int proSale, String prokind, int proStock, String proDate, String proPhoto,String preview,String proContent) {
-		final String SQL="insert into Product (proid,proname,proPrice,prosale,prokind,proStock,proDate,proPhoto,preview,proContent) " + 
-				"VALUES (PRODUCT_SEQ.nextval,?,?,?,?,?,?,?,?,?)";
-		try {
-			conn=DBconnection.DBconn();
-			pstmt=conn.prepareStatement(SQL);
-			pstmt.setString(1, proname);
-			pstmt.setInt(2, proPrice);
-			pstmt.setInt(3, proSale);
-			pstmt.setString(4, prokind);
-			pstmt.setInt(5, proStock);
-			pstmt.setString(6, proDate);
-			pstmt.setString(7, proPhoto);
-			pstmt.setString(8, preview);
-			pstmt.setString(9, proContent);
-			
-			return pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println(TAG+"proSave : "+e.getMessage());
-		}
-		return -1;
-	}
-		
-	public int productUpdate(String proname,int proPrice, int proSale, String prokind, int proStock, String proDate, String proPhoto,String preview,String proContent, int proid) {
-		final String SQL="update product set proname=?, proPrice=?, proSale=?, prokind=?, proStock=?, proDate=?, proPhoto=?,preview=?, proContent=? where proid=?";
-
-		try {
-			conn=DBconnection.DBconn();
-			pstmt=conn.prepareStatement(SQL);
-			pstmt.setString(1, proname);
-			pstmt.setInt(2, proPrice);
-			pstmt.setInt(3, proSale);
-			pstmt.setString(4, prokind);
-			pstmt.setInt(5, proStock);
-			pstmt.setString(6, proDate);
-			pstmt.setString(7, proPhoto);
-			pstmt.setString(8, preview);
-			pstmt.setString(9, proContent);
-			pstmt.setInt(10, proid);
-			
-			
-			int result=pstmt.executeUpdate();
-			System.out.println(result);
-			return result;
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println(TAG+"productUpdate : "+e.getMessage());
-			
-		}
-		return -1;
-	}
-	
-	public int subproductUpdate(String subName,int subPrice, int subSale, String subDate, String subPhoto,String subPreview,String subContent, int subid) {
-		final String SQL="update subproduct set subName=?, subPrice=?, subSale=?, subDate=?, subPhoto=?, subPreview=?,subContent=? where subid=?";
-
-		try {
-			conn=DBconnection.DBconn();
-			pstmt=conn.prepareStatement(SQL);
-			pstmt.setString(1, subName);
-			pstmt.setInt(2, subPrice);
-			pstmt.setInt(3, subSale);
-			pstmt.setString(4, subDate);
-			pstmt.setString(5, subPhoto);
-			pstmt.setString(6, subPreview);
-			pstmt.setString(7, subContent);
-			pstmt.setInt(8, subid);
-			
-			
-			int result=pstmt.executeUpdate();
-			System.out.println(result);
-			return result;
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println(TAG+"subproductUpdate : "+e.getMessage());
-		
-		}
-		return -1;
-	}
-	
-
-	
-
-	
 }

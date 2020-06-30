@@ -18,8 +18,8 @@ import com.dailyT.repository.ClientRepository;
 import com.dailyT.util.Script;
 import com.google.gson.Gson;
 
-public class ProListAction implements Action {
-	private static final String TAG="ProListAction : ";
+public class ToolListAction implements Action {
+	private static final String TAG="ToolListAction : ";
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,44 +28,33 @@ public class ProListAction implements Action {
 		ClientRepository clientRepository=ClientRepository.getInstance();
 		if(category.equals("all")) {
 			System.out.println(TAG+category+" 값 확인됨.");
-			List<Product> products=clientRepository.FindAllTeaProduct();
+			List<Product> products=clientRepository.FindAllToolProduct();
 			
 			request.setAttribute("products", products);
 			//System.out.println("products : "+products.get(0).getProPhoto());
 			
-			RequestDispatcher dis = request.getRequestDispatcher("client/product.jsp");
+			RequestDispatcher dis = request.getRequestDispatcher("client/tool.jsp");
 			dis.forward(request, response);
 			
-		}else if(category.equals("blacktea")) {
+		}else if(category.equals("package")) {
 			System.out.println(TAG+category+" 값 확인됨.");
-			List<Product> products=clientRepository.FindSelectTeaProduct("홍차");
+			List<Product> products=clientRepository.FindSelectToolProduct("패키지");
 			
 			request.setAttribute("products", products);
 			
-			RequestDispatcher dis = request.getRequestDispatcher("client/product.jsp");
+			RequestDispatcher dis = request.getRequestDispatcher("client/tool.jsp");
 			dis.forward(request, response);
 			
-		}else if(category.equals("greentea")) {
+		}else if(category.equals("tool")) {
 			System.out.println(TAG+category+" 값 확인됨.");
-			List<Product> products=clientRepository.FindSelectTeaProduct("녹차");
+			List<Product> products=clientRepository.FindSelectTeaProduct("다구");
 			
 			request.setAttribute("products", products);
 			
-			RequestDispatcher dis = request.getRequestDispatcher("client/product.jsp");
-			dis.forward(request, response);
-			
-		}else if(category.equals("whitetea")) {
-			System.out.println(TAG+category+" 값 확인됨.");
-			List<Product> products=clientRepository.FindSelectTeaProduct("백차");
-			
-			request.setAttribute("products", products);
-			
-			RequestDispatcher dis = request.getRequestDispatcher("client/product.jsp");
+			RequestDispatcher dis = request.getRequestDispatcher("client/tool.jsp");
 			dis.forward(request, response);
 			
 		}
 		
-		
-
 	}
 }

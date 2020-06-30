@@ -78,10 +78,10 @@
 							<li><a class="detail-nav-link" href="/DailyT/client?cmd=prolist&category=greentea">녹차</a></li>
 							<li><a class="detail-nav-link" href="/DailyT/client?cmd=prolist&category=whitetea">백차</a></li>
 						</ul></li>
-					<li class="nav-item5 col-md-3"><a class="nav-link" href="#">도구</a>
+					<li class="nav-item5 col-md-3"><a class="nav-link" href="/DailyT/client?cmd=toollist&category=all">도구</a>
 						<ul class="detail-nav5">
-							<li><a class="detail-nav-link" href="#">스타터팩</a></li>
-							<li><a class="detail-nav-link" href="#">다구</a></li>
+							<li><a class="detail-nav-link" href="/DailyT/client?cmd=toollist&category=package">스타터팩</a></li>
+							<li><a class="detail-nav-link" href="/DailyT/client?cmd=toollist&category=tool">다구</a></li>
 						</ul></li>
 					<li class="nav-item  col-md-3"><a class="nav-link" href="#">이벤트</a>
 					</li>

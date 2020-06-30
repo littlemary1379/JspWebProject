@@ -35,6 +35,7 @@
 					<option>홍차</option>
 					<option>백차</option>
 					<option>녹차</option>
+					<option>패키지</option>
 					<option>다구</option>
 				</select>
 			</div>
