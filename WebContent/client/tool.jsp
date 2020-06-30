@@ -15,9 +15,9 @@
 
 	<!-- 카테고리별 버튼 -->
 	<div class="product-button d-flex">
-		<button onclick="prolistChange('전체');">전체</button>
-		<button onclick="prolistChange('패키지');">스타터팩</button>
-		<button onclick="prolistChange('다구');">다구</button>
+		<button onclick="toollistChange('전체');">전체</button>
+		<button onclick="toollistChange('패키지');">스타터팩</button>
+		<button onclick="toollistChange('다구');">다구</button>
 
 	</div>
 	<!-- 버튼 종료 -->
@@ -51,4 +51,4 @@
 </div>
 <!-- 제품 전시 종료 -->
 
-<script src="/DailyT/js/productlist.js"></script>
+<script src="/DailyT/js/toollist.js"></script>

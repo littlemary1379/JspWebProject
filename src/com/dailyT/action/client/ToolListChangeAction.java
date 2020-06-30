@@ -14,8 +14,8 @@ import com.dailyT.repository.ClientRepository;
 import com.dailyT.util.Script;
 import com.google.gson.Gson;
 
-public class ProListChangeAction implements Action {
-	private static final String TAG="ProListChangeAction : ";
+public class ToolListChangeAction implements Action {
+	private static final String TAG="ToolListChangeAction : ";
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -27,30 +27,23 @@ public class ProListChangeAction implements Action {
 		
 		ClientRepository clientRepository=ClientRepository.getInstance();
 		
-		//category에서 받아오는 값이 '전체' 라면 잎차 전체를, '홍차'라면 홍차만, '녹차'라면 녹차만, '백차'라면 백차만 도출
+		//category에서 받아오는 값이 '전체' 라면 도구 전체를, '다구'라면 다구만, '스타터팩'라면 패키지만 호출
 		if(category.equals("전체")) {
 			System.out.println(TAG+category+" 값 확인됨.");
-			List<Product> products=clientRepository.FindAllTeaProduct();
+			List<Product> products=clientRepository.FindAllToolProduct();
 			
 			Gson gson=new Gson();
 			String result=gson.toJson(products);
 			Script.ajaxJson(result, response);
 			
-		}else if(category.equals("홍차")) {
+		}else if(category.equals("패키지")) {
 			System.out.println(TAG+category+" 값 확인됨.");
 			List<Product> products=clientRepository.FindSelectTeaProduct(category);
 			Gson gson=new Gson();
 			String result=gson.toJson(products);
 			Script.ajaxJson(result, response);
 			
-		}else if(category.equals("녹차")) {
-			System.out.println(TAG+category+" 값 확인됨.");
-			List<Product> products=clientRepository.FindSelectTeaProduct(category);
-			Gson gson=new Gson();
-			String result=gson.toJson(products);
-			Script.ajaxJson(result, response);
-			
-		}else if(category.equals("백차")) {
+		}else if(category.equals("다구")) {
 			System.out.println(TAG+category+" 값 확인됨.");
 			List<Product> products=clientRepository.FindSelectTeaProduct(category);
 			Gson gson=new Gson();
@@ -58,7 +51,6 @@ public class ProListChangeAction implements Action {
 			Script.ajaxJson(result, response);
 			
 		}
-		
 		
 	}
 }
