@@ -37,7 +37,7 @@
 					<div class="card-body">
 						<h4 class="card-title">${products.proName }</h4>
 						<p class="card-text">${products.preview }</p>
-						<a href="/DailyT/client?cmd=proDetail&proId=${products.proId }" class="btn btn-primary stretched-link">자세히 보기</a>
+						<a href="/DailyT/client?cmd=toolDetail&proId=${products.proId }" class="btn btn-primary stretched-link">자세히 보기</a>
 					</div>
 
 				</div>

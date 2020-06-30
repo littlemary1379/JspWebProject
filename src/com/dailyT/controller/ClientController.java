@@ -12,6 +12,7 @@ import com.dailyT.action.client.ProListAction;
 import com.dailyT.action.client.ProListChangeAction;
 import com.dailyT.action.client.SubListAction;
 import com.dailyT.action.client.SubListChangeAction;
+import com.dailyT.action.client.ToolDetailAction;
 import com.dailyT.action.client.ToolListAction;
 import com.dailyT.action.client.ToolListChangeAction;
 import com.dailyT.action.client.WriteProReplyAction;
@@ -77,6 +78,8 @@ public class ClientController extends HttpServlet {
 			return new ToolListAction();
 		}else if(cmd.equals("toollistChange")) {
 			return new ToolListChangeAction();
+		}else if(cmd.equals("toolDetail")) {
+			return new ToolDetailAction();
 		}
 		return null;
 	}
