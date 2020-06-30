@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.dailyT.action.Action;
 import com.dailyT.action.admin.CustListAction;
+import com.dailyT.action.admin.EventregAction;
+import com.dailyT.action.admin.EventregProcAction;
 import com.dailyT.action.admin.HomeAction;
 import com.dailyT.action.admin.SubDeleteAction;
 import com.dailyT.action.admin.ProListAction;
@@ -98,7 +100,11 @@ public class AdminController extends HttpServlet {
 		}else if(cmd.equals("prodelete")) { 
 			return new ProDeleteAction(); // 단품 삭제 액션	
 		}else if(cmd.equals("custlist")) { 
-			return new CustListAction(); // 단품 관리 페이지 진입 액션	
+			return new CustListAction(); // 회원 관리 페이지 진입 액션	
+		}else if(cmd.equals("eventreg")) { 
+			return new EventregAction(); // 이벤트 등록 페이지 진입 액션
+		}else if(cmd.equals("eventregProc")) { 
+			return new EventregProcAction(); // 이벤트 등록 페이지 진입 액션
 		}
 		
 		return null;

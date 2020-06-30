@@ -187,6 +187,27 @@ public class AdminRepository {
 		return null;
 	}
 	
+	public int eventSave(String eventname, String eventStartDate,String eventFinishDate, String eventBanner,String eventpreview,String eventContent) {
+		final String SQL="insert into eventlist (eventid,eventname,eventStartDate,eventFinishDate,eventBanner,eventpreview,eventContent) " + 
+				"VALUES (eventlist_SEQ.nextval,?,?,?,?,?,?)";
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			pstmt.setString(1, eventname);
+			pstmt.setString(2, eventStartDate);
+			pstmt.setString(3, eventFinishDate);
+			pstmt.setString(4, eventBanner);
+			pstmt.setString(5, eventpreview);
+			pstmt.setString(6, eventContent);
+			
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(TAG+"proSave : "+e.getMessage());
+		}
+		return -1;
+	}
+	
 	public int proSave(String proname,int proPrice, int proSale, String prokind, int proStock, String proDate, String proPhoto,String preview,String proContent) {
 		final String SQL="insert into Product (proid,proname,proPrice,prosale,prokind,proStock,proDate,proPhoto,preview,proContent) " + 
 				"VALUES (PRODUCT_SEQ.nextval,?,?,?,?,?,?,?,?,?)";
