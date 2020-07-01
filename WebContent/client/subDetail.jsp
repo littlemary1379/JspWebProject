@@ -42,7 +42,7 @@
 				<!-- 분기 종료 -->
 
 				<!-- 기간 선택 폼 -->
-				<form class="subscribe-buy" action="">
+				<form class="subscribe-buy" action="/DailyT/order?cmd=subscribe" method="post">
 					<select class="subscribe-buy-term col-sm-12" id="subscribe-buy-term" name="subscribe-buy-term">
 						<option>1개월</option>
 						<option>3개월</option>

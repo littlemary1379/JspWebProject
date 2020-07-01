@@ -38,7 +38,9 @@
 
     </tbody>
   </table>
+
 </div>
+<hr/>
 <script>
 	function proDelete(proId) {
 		console.log(proId);

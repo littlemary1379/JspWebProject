@@ -37,9 +37,9 @@
 						<p>${subProducts.subPrice }원</p>
 					</div>
 				</div>
+				<br/>
 				<button class="subscribe-detail col-sm-12" onclick="location.href='/DailyT/client?cmd=subDetail&subId=${subProducts.subId }'">자세히 보기</button>
-				<hr />
-			
+				<hr />		
 			</div>
 		</c:forEach>
 	</div>

@@ -41,7 +41,8 @@ function makelist(list) {
 	listitem += `<p>${list.subPrice }원</p>`;
 	listitem += `</div>`;
 	listitem += `</div>`;
-	listitem += `<button class="subscribe-detail col-sm-12">자세히 보기</button>`;
+	listitem += `<br />`;
+	listitem += `<button class="subscribe-detail col-sm-12" onclick="location.href='/DailyT/client?cmd=subDetail&subId=${list.subId }'">자세히 보기</button>`;
 	listitem += `<hr />`;
 	listitem += `</div>`;
 	

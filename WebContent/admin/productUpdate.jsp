@@ -44,24 +44,36 @@
 							<option selected>홍차</option>
 							<option>백차</option>
 							<option>녹차</option>
+							<option>패키지</option>
 							<option>다구</option>
 						</c:when>
 						<c:when test="${product.prokind  eq '백차'}">
 							<option>홍차</option>
 							<option selected>백차</option>
 							<option>녹차</option>
+							<option>패키지</option>
 							<option>다구</option>
 						</c:when>
 						<c:when test="${product.prokind  eq '녹차'}">
 							<option>홍차</option>
 							<option>백차</option>
 							<option selected>녹차</option>
+							<option>패키지</option>
 							<option>다구</option>
+						</c:when>
+						<c:when test="${product.prokind  eq '패키지'}">
+							<option>홍차</option>
+							<option>백차</option>
+							<option>녹차</option>
+							<option selected>패키지</option>
+							<option>다구</option>
+								
 						</c:when>
 						<c:when test="${product.prokind  eq '다구'}">
 							<option>홍차</option>
 							<option>백차</option>
 							<option>녹차</option>
+							<option>패키지</option>
 							<option selected>다구</option>
 						</c:when>
 					</c:choose>
