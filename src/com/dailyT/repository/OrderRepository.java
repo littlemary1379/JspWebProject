@@ -29,6 +29,27 @@ public class OrderRepository {
 	private ResultSet rs=null;
 	
 	
+	public int subscribeSave(int custid, String subscribeName, String subscribeDate, int subscribeTerm, String subscribeAddr, String subscribePhone) {
+		final String SQL="insert into subscribe (subscribeId,custid,subscribeName,subscribeDate,subscribeTerm,subscribeAddr,subscribePhone) " + 
+				"VALUES (subscribe_SEQ.nextval,?,?,?,?,?,?)";
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			pstmt.setInt(1, custid);
+			pstmt.setString(2, subscribeName);
+			pstmt.setString(3, subscribeDate);
+			pstmt.setInt(4, subscribeTerm);
+			pstmt.setString(5, subscribeAddr);
+			pstmt.setString(6, subscribePhone);
+			
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(TAG+"subscribeSave : "+e.getMessage());
+		}
+		return -1;
+	}
+	
 	public Customer FindCustomerById(int custid) {
 		final String SQL="select username,address,cellphone from customer where custid=?" ;
 		Customer customer=null;
@@ -54,95 +75,7 @@ public class OrderRepository {
 		}
 		return null;
 	}
-	
-	public int deletePro(int proId) {
-		final String SQL="delete from product where proid=?";
-
-		try {
-			conn=DBconnection.DBconn();
-			pstmt=conn.prepareStatement(SQL);
-			pstmt.setInt(1, proId);
-			
-			int result=pstmt.executeUpdate();
-			System.out.println(result);
-			return result;
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println(TAG+"deletePro : "+e.getMessage());
-		}
-		return -1;
-	}
-	
-	public int deleteEvent(int eventId) {
-		final String SQL="delete from eventlist where eventid=?";
-
-		try {
-			conn=DBconnection.DBconn();
-			pstmt=conn.prepareStatement(SQL);
-			pstmt.setInt(1, eventId);
-			
-			int result=pstmt.executeUpdate();
-			System.out.println(result);
-			return result;
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println(TAG+"deleteEvent : "+e.getMessage());
-		}
-		return -1;
-	}
-	
-	public int deleteSub(int subId) {
-		final String SQL="delete from subproduct where subid=?";
-
-		try {
-			conn=DBconnection.DBconn();
-			pstmt=conn.prepareStatement(SQL);
-			pstmt.setInt(1, subId);
-			
-			int result=pstmt.executeUpdate();
-			return result;
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println(TAG+"deleteSub : "+e.getMessage());
-		}
-		return -1;
-	}
-	
-	public Product findProductByProID(int proId) {
-		final String SQL="select proId, proname,proPrice,prosale,prokind,proStock,proDate,proPhoto,preview,proContent from product where proId=?";
-
-		Product product=null;
-		try {
-			conn=DBconnection.DBconn();
-			pstmt=conn.prepareStatement(SQL);
-			pstmt.setInt(1, proId);
-			rs=pstmt.executeQuery();
-			
-			while(rs.next()) {
-				product=Product.builder()
-						.proId(rs.getInt("proId"))
-						.proName(rs.getString("proname"))
-						.proPrice(rs.getInt("proPrice"))
-						.proSale(rs.getInt("prosale"))
-						.prokind(rs.getString("prokind"))
-						.proStock(rs.getInt("prostock"))
-						.proDate(rs.getString("prodate"))
-						.proPhoto(rs.getString("prophoto"))
-						.preview(rs.getString("preview"))
-						.proContent(rs.getString("procontent"))
-						.build();
-				return product;
-			}
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		return null;
-	}
-	
+		
 	public SubProduct findSubProductBySubID(int subId) {
 		final String SQL="select subId, subname,subPrice,subsale,subDate,subPhoto,subPreview,subContent from subproduct where subId=?";
 
@@ -312,29 +245,7 @@ public class OrderRepository {
 		return -1;
 	}
 	
-	public int proSave(String proname,int proPrice, int proSale, String prokind, int proStock, String proDate, String proPhoto,String preview,String proContent) {
-		final String SQL="insert into Product (proid,proname,proPrice,prosale,prokind,proStock,proDate,proPhoto,preview,proContent) " + 
-				"VALUES (PRODUCT_SEQ.nextval,?,?,?,?,?,?,?,?,?)";
-		try {
-			conn=DBconnection.DBconn();
-			pstmt=conn.prepareStatement(SQL);
-			pstmt.setString(1, proname);
-			pstmt.setInt(2, proPrice);
-			pstmt.setInt(3, proSale);
-			pstmt.setString(4, prokind);
-			pstmt.setInt(5, proStock);
-			pstmt.setString(6, proDate);
-			pstmt.setString(7, proPhoto);
-			pstmt.setString(8, preview);
-			pstmt.setString(9, proContent);
-			
-			return pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println(TAG+"proSave : "+e.getMessage());
-		}
-		return -1;
-	}
+
 	
 	public int subSave(String subName,int subPrice, int subSale, String subDate, String subPhoto,String subPreview,String subContent) {
 		final String SQL="insert into subProduct (subid,subName,subPrice,subSale,subDate,subPhoto,subPreview,subContent) " + 

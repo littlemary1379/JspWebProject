@@ -4,8 +4,9 @@
 
 <div class="container h-100 col-md-6">
 	<h4 id="subscribe-title">정기 배송 주문</h4>
-	<!-- 회원가입 입력 폼 -->
-	<form class="form col-md-12 was-validated" action="/DailyT/cust?cmd=joinProc" method="post">
+	<!-- 정기구독 입력 폼 -->
+	<form class="form col-md-12 was-validated" action="/DailyT/order?cmd=subscribeProc" method="post">
+	
 		<div class="form-group">
 			<label class="ID-label">배송 기간 :</label> 
 			<input type="text" class="form-control" name="term" id="term" value="${buyTerm }" readonly>

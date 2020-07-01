@@ -44,6 +44,7 @@ import com.dailyT.action.customer.ResetPWAction;
 import com.dailyT.action.customer.ResetPWProcAction;
 import com.dailyT.action.customer.UserIDCheckAction;
 import com.dailyT.action.order.SubscribeAction;
+import com.dailyT.action.order.SubscribeProcAction;
 import com.dailyT.action.order.sameOrderAction;
 
 
@@ -80,9 +81,11 @@ public class OrderController extends HttpServlet {
 	
 	Action router(String cmd) {
 		if(cmd.equals("subscribe")) { 
-			return new SubscribeAction(); //관리자 홈페이지 진입 액션
+			return new SubscribeAction(); //정기구독 진입 액션
 		}else if(cmd.equals("sameOrder")) { 
-			return new sameOrderAction(); //관리자 홈페이지 진입 액션
+			return new sameOrderAction(); //주문자와 로그인 한 사람이 동일할 경우 정보를 가져오는 액션
+		}else if(cmd.equals("subscribeProc")) { 
+			return new SubscribeProcAction(); //정기구독 등록 액션
 		}
 		
 		return null;
