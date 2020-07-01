@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import com.dailyT.action.Action;
 
-public class UserCheckAction implements Action {
+public class NonUserOrderAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//인증 세션이 있을 때는 바로 주문 페이지로, 인증 세션이 없으면 로그인/비회원 확인 페이지로 이동
@@ -18,12 +18,10 @@ public class UserCheckAction implements Action {
 		
 		if(session.getAttribute("principal")==null) {
 			System.out.println("세션 없음");
-			RequestDispatcher dis=request.getRequestDispatcher("order/orderLogin.jsp");
-			dis.forward(request, response);
-		}else {
-			System.out.println("세션 있음");
 			RequestDispatcher dis=request.getRequestDispatcher("order/orderPage.jsp");
 			dis.forward(request, response);
+		}else {
+			return;
 		}
 		
 	}
