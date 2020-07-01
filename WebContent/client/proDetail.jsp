@@ -29,6 +29,7 @@
 						<p style="text-decoration: line-through;">${product.proPrice}원</p>
 						<p>
 							→
+							<c:set var="proPrice" value="${product.proPrice*(1-product.proSale/100) }" />
 							<fmt:parseNumber value="${product.proPrice*(1-product.proSale/100) }" integerOnly="true" />
 							원
 						</p>
@@ -36,6 +37,7 @@
 
 					<%--할인율이 없을 때의 출력 --%>
 					<c:when test="${product.proSale eq 0  }">
+						<c:set var="proPrice" value="${product.proPrice}" />
 						<p>${product.proPrice}원</p>
 					</c:when>
 				</c:choose>
@@ -47,7 +49,7 @@
 					<input type="text" class="form-control" id="amount" name="amount">
 					<div class="d-flex">
 						<button class="col-sm-6">구매하기</button>
-						<button class="col-sm-6">장바구니</button>
+						<button class="col-sm-6" type="button" onclick="addCart('${product.proName}','${product.proPhoto }','${proPrice }');">장바구니</button>
 					</div>
 				</form>
 				<!-- 갯수 입력 폼 종료 -->
@@ -150,3 +152,4 @@
 </div>
 <!-- 덧글 게시 종료 -->
 <script src="/DailyT/js/proReply.js"></script>
+<script src="/DailyT/js/addCart.js"></script>

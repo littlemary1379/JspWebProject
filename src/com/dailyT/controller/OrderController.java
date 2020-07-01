@@ -43,9 +43,12 @@ import com.dailyT.action.customer.PWCheckAction;
 import com.dailyT.action.customer.ResetPWAction;
 import com.dailyT.action.customer.ResetPWProcAction;
 import com.dailyT.action.customer.UserIDCheckAction;
+import com.dailyT.action.order.CheckCartAction;
 import com.dailyT.action.order.SubscribeAction;
 import com.dailyT.action.order.SubscribeCheckAction;
 import com.dailyT.action.order.SubscribeProcAction;
+import com.dailyT.action.order.UserCheckAction;
+import com.dailyT.action.order.addCartAction;
 import com.dailyT.action.order.sameOrderAction;
 
 
@@ -89,6 +92,12 @@ public class OrderController extends HttpServlet {
 			return new SubscribeProcAction(); //정기구독 등록 액션
 		}else if(cmd.equals("subscribeCheck")) { 
 			return new SubscribeCheckAction(); //정기구독 등록 액션
+		}else if(cmd.equals("checkCart")) { 
+			return new CheckCartAction(); //정기구독 등록 액션
+		}else if(cmd.equals("addCart")) { 
+			return new addCartAction(); //정기구독 등록 액션
+		}else if(cmd.equals("userCheck")) { 
+			return new UserCheckAction(); //정기구독 등록 액션
 		}
 		
 		return null;
