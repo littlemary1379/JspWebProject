@@ -43,6 +43,7 @@
 
 				<!-- 기간 선택 폼 -->
 				<form class="subscribe-buy" action="/DailyT/order?cmd=subscribe" method="post">
+					<input type="hidden" id="subName" name="subName" value="${subProduct.subName}">
 					<select class="subscribe-buy-term col-sm-12" id="subscribe-buy-term" name="subscribe-buy-term">
 						<option>1개월</option>
 						<option>3개월</option>

@@ -21,17 +21,19 @@ public class SubscribeProcAction implements Action{
 		Customer customer=(Customer)session.getAttribute("principal");
 		
 		//1. 변수 가져오기
+		String subscribeKind=request.getParameter("kind");
 		int subscribeTerm=Integer.parseInt(request.getParameter("term").replaceAll("[^0-9]",""));		
 		int custid=customer.getCustid();
 		String subscribeName=request.getParameter("deliveryName");
 		String subscribeDate=request.getParameter("startDate");
 		String subscribeAddr=request.getParameter("deliveryAddr");
 		String subscribePhone=request.getParameter("deliveryPhone");
+		System.out.println(TAG+subscribeKind);
 	
 		
 		//2. 변수를 가지고 DB등록
 		OrderRepository orderRepository=OrderRepository.getInstance();
-		int result=orderRepository.subscribeSave(custid, subscribeName, subscribeDate, subscribeTerm, subscribeAddr, subscribePhone);
+		int result=orderRepository.subscribeSave(custid, subscribeKind, subscribeName, subscribeDate, subscribeTerm, subscribeAddr, subscribePhone);
 		
 		//3. 결과에 따라 페이지 이동
 		if(result==1){

@@ -13,6 +13,9 @@ import com.dailyT.model.Customer;
 import com.dailyT.util.Script;
 
 public class SubscribeAction implements Action {
+	private static final String TAG="SubscribeAction : ";
+
+	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -24,13 +27,15 @@ public class SubscribeAction implements Action {
 		}
 		
 		//1. 입력받은 정보를 가지고 주문창으로 이동
+		String subscribeKind=request.getParameter("subName");
 		String buyTerm=request.getParameter("subscribe-buy-term");
 		Customer customer=(Customer)session.getAttribute("principal");
 		int custid=customer.getCustid();
-		System.out.println(custid);
+		System.out.println(TAG+subscribeKind);
 		
 		request.setAttribute("buyTerm", buyTerm);
 		request.setAttribute("custid", custid);
+		request.setAttribute("subscribeKind", subscribeKind);
 		
 		RequestDispatcher dis=request.getRequestDispatcher("order/subscribe.jsp");
 		dis.forward(request, response);

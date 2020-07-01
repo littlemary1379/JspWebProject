@@ -13,6 +13,7 @@ import com.dailyT.model.Customer;
 import com.dailyT.model.Event;
 import com.dailyT.model.Product;
 import com.dailyT.model.SubProduct;
+import com.dailyT.model.Subscribe;
 
 public class OrderRepository {
 	private static final String TAG="OrderRepository : ";
@@ -29,18 +30,48 @@ public class OrderRepository {
 	private ResultSet rs=null;
 	
 	
-	public int subscribeSave(int custid, String subscribeName, String subscribeDate, int subscribeTerm, String subscribeAddr, String subscribePhone) {
-		final String SQL="insert into subscribe (subscribeId,custid,subscribeName,subscribeDate,subscribeTerm,subscribeAddr,subscribePhone) " + 
-				"VALUES (subscribe_SEQ.nextval,?,?,?,?,?,?)";
+	
+	public List<Subscribe> FindSubscribeByCustid(int custid) {
+		final String SQL="select subscribeKind,subscribeDate,subscribeTerm from subscribe where custid=?";
+		List<Subscribe> subscribes=new ArrayList<>();
+		Subscribe subscribe=null;
 		try {
 			conn=DBconnection.DBconn();
 			pstmt=conn.prepareStatement(SQL);
 			pstmt.setInt(1, custid);
-			pstmt.setString(2, subscribeName);
-			pstmt.setString(3, subscribeDate);
-			pstmt.setInt(4, subscribeTerm);
-			pstmt.setString(5, subscribeAddr);
-			pstmt.setString(6, subscribePhone);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				subscribe=Subscribe.builder()
+						.subscribeKind(rs.getString("subscribeKind"))
+						.subscribeDate(rs.getString("subscribeDate"))
+						.subscribeTerm(rs.getInt("subscribeTerm"))
+						.build();
+				subscribes.add(subscribe);
+			}
+			return subscribes;
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(TAG+"FindSubscribeByCustid : "+e.getMessage());
+		}
+		return null;
+	}
+	
+	public int subscribeSave(int custid, String subscribeKind,String subscribeName, String subscribeDate, int subscribeTerm, String subscribeAddr, String subscribePhone) {
+		final String SQL="insert into subscribe (subscribeId,custid,subscribeKind,subscribeName,subscribeDate,subscribeTerm,subscribeAddr,subscribePhone) " + 
+				"VALUES (subscribe_SEQ.nextval,?,?,?,?,?,?,?)";
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			pstmt.setInt(1, custid);
+			pstmt.setString(2, subscribeKind);
+			pstmt.setString(3, subscribeName);
+			pstmt.setString(4, subscribeDate);
+			pstmt.setInt(5, subscribeTerm);
+			pstmt.setString(6, subscribeAddr);
+			pstmt.setString(7, subscribePhone);
 			
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {

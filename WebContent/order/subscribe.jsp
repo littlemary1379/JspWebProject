@@ -6,7 +6,11 @@
 	<h4 id="subscribe-title">정기 배송 주문</h4>
 	<!-- 정기구독 입력 폼 -->
 	<form class="form col-md-12 was-validated" action="/DailyT/order?cmd=subscribeProc" method="post">
-	
+		
+		<div class="form-group">
+			<label class="ID-label">구독 종류 :</label> 
+			<input type="text" class="form-control" name="kind" id="kind" value="${subscribeKind }" readonly>
+		</div>
 		<div class="form-group">
 			<label class="ID-label">배송 기간 :</label> 
 			<input type="text" class="form-control" name="term" id="term" value="${buyTerm }" readonly>

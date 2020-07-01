@@ -45,7 +45,7 @@
 				</c:if>	
 				<c:if test="${not empty sessionScope.principal }">		
 					<li class="nav-item"><a class="nav-link" href="/DailyT/cust?cmd=PWCheck">회원정보 수정</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">구독 확인</a></li>
+					<li class="nav-item"><a class="nav-link" href="/DailyT/order?cmd=subscribeCheck">구독 확인</a></li>
 					<li class="nav-item"><a class="nav-link" href="/DailyT/cust?cmd=logout">로그아웃</a></li>
 					<li class="nav-item"><a class="nav-link" href="#"><i class="fas fa fa-shopping-cart"></i></a></li>
 				</c:if>	
