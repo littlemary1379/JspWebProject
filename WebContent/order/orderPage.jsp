@@ -2,23 +2,52 @@
 <%@ include file="../include/nav.jsp"%>
 
 
-<div class="container h-100 col-md-6">
+<div class="container">
 	<h4 id="subscribe-title">주문 페이지</h4>
-	<!-- 정기구독 입력 폼 -->
+	<!-- 주문상품 확인 폼 -->
+		<table class="table" id="cart">
+		<thead>
+			<tr>
+				<th>상품명</th>
+				<th>이미지</th>
+				<th>가격</th>
+				<th>수량</th>
+			</tr>
+		</thead>
+		<tbody>
+
+			<c:forEach items="${orderlist }" var="orderlist" varStatus="status">
+				<c:set var="totalPrice" value="${totalPrice+(orderlist.orderProPrice*orderlist. count)}" />
+		
+				<tr id="cartlist-${status.index }">
+					<td id="itemname-${status.index }">${orderlist. orderProName}</td>
+					<td><img id="itemimage-${status.index }" class="col-sm-12"src="${orderlist.orderPhoto }" style="width:150px"></td>
+					<td id="itemprice-${status.index }">${orderlist. orderProPrice}</td>
+					<td class="d-flex">
+						<form name="form-${status.index }">
+							<input type="text" id="count-${status.index }" name="count" value=${orderlist. count} readonly>
+						</form>
+	
+					</td>
+					<td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+	<hr />
+	<div class="d-flex justify-content-between">
+		<div class="d-flex">
+			<label>total: </label>
+			<p id="totalPrice">${totalPrice }</p>
+			
+		</div>
+	</div>
+</div>
+<div class="container h-100 col-md-6">
+	
 	<form class="form col-md-12 was-validated" action="/DailyT/order?cmd=subscribeProc" method="post">
 		
-		<div class="form-group">
-			<label class="ID-label">구독 종류 :</label> 
-			<input type="text" class="form-control" name="kind" id="kind" value="${subscribeKind }" readonly>
-		</div>
-		<div class="form-group">
-			<label class="ID-label">배송 기간 :</label> 
-			<input type="text" class="form-control" name="term" id="term" value="${buyTerm }" readonly>
-		</div>
-		<div class="form-group">
-			<label class="ID-label">시작 날짜 :</label> 
-			<input type="text" class="form-control" name="startDate" id="startDate" readonly>
-		</div>
+
 		<div class="delivery">
 			<button type="button" onclick="sameOrder(${custid })">주문자와 동일</button>
 			<div class="form-group">
@@ -39,14 +68,13 @@
 			</div>
 		</div>
 		<div class="form-group d-flex justify-content-end">
-			<button class="btn btn-primary" type="submit">신청하기</button>
+			<button class="btn btn-primary" type="submit">주문하기</button>
 		</div>
 	</form>
 
 </div>
 
 <script src="/DailyT/js/juso.js"></script>
-<script src="/DailyT/js/today.js"></script>
 <script src="/DailyT/js/sameOrder.js"></script>
 </body>
 </html>

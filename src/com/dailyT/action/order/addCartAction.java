@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import com.dailyT.action.Action;
 import com.dailyT.model.Customer;
 import com.dailyT.model.OrderList;
+import com.dailyT.model.OrderList.OrderLists;
 import com.dailyT.util.Script;
 import com.google.gson.Gson;
 
@@ -23,11 +24,11 @@ public class addCartAction implements Action{
 		Customer customer=(Customer)session.getAttribute("principal");
 		
 		//1. 세션에 장바구니가 기존에 없으면 새 바구니를, 없었으면 바구니에 기존 물품을 추가한다.
-		ArrayList<OrderList> orderList=null;
+		ArrayList<OrderLists> orderList=null;
 		if(session.getAttribute("orderlist")==null) {
-			orderList=new ArrayList<OrderList>();
+			orderList=new ArrayList<OrderLists>();
 		}else {
-			orderList=(ArrayList<OrderList>)session.getAttribute("orderlist");
+			orderList=(ArrayList<OrderLists>)session.getAttribute("orderlist");
 		}
 		
 		//2.buffer을 이용해 데이터를 불러온다.
@@ -41,12 +42,13 @@ public class addCartAction implements Action{
 		//System.out.println(sb.toString());
 		
 		Gson gson=new Gson();
-		OrderList order=gson.fromJson(sb.toString(), OrderList.class);
+		OrderLists order=gson.fromJson(sb.toString(), OrderList.OrderLists.class);
 		//System.out.println(order);
 		
 		//3. 변수를 넣는다.
 	
 		orderList.add(order);
+		System.out.println(orderList);
 		
 		session.setAttribute("orderlist", orderList);
 		

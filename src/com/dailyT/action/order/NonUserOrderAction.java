@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.dailyT.action.Action;
+import com.dailyT.model.OrderList;
 
 public class NonUserOrderAction implements Action {
 	@Override
@@ -18,6 +19,8 @@ public class NonUserOrderAction implements Action {
 		
 		if(session.getAttribute("principal")==null) {
 			System.out.println("세션 없음");
+			OrderList orderCartList=(OrderList)session.getAttribute("orderCartList");
+			System.out.println(orderCartList);
 			RequestDispatcher dis=request.getRequestDispatcher("order/orderPage.jsp");
 			dis.forward(request, response);
 		}else {

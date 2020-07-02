@@ -11,14 +11,16 @@ import javax.servlet.http.HttpSession;
 import com.dailyT.action.Action;
 import com.dailyT.model.OrderList;
 
-public class CheckCartAction implements Action {
+public class OrderLoginAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		HttpSession session=request.getSession();
-		
-		RequestDispatcher dis = request.getRequestDispatcher("order/cart.jsp");
-		dis.forward(request, response);
+		HttpSession session = request.getSession();
+		if (session.getAttribute("principal") == null) {
+
+			RequestDispatcher dis = request.getRequestDispatcher("order/orderLogin.jsp");
+			dis.forward(request, response);
+		}
 	}
 }
