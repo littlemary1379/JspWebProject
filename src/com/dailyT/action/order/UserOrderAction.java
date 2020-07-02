@@ -26,11 +26,10 @@ public class UserOrderAction implements Action {
 			
 			if (session.getAttribute("orderlist") != null) {
 				
-				
 				RequestDispatcher dis = request.getRequestDispatcher("order/orderPage.jsp");
 				dis.forward(request, response);
 			}else {
-				System.out.println("세션 비었는디?");
+				
 				RequestDispatcher dis = request.getRequestDispatcher("order/orderPage.jsp");
 				dis.forward(request, response);
 			}

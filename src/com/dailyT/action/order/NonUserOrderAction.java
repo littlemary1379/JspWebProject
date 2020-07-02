@@ -18,9 +18,7 @@ public class NonUserOrderAction implements Action {
 		HttpSession session=request.getSession();
 		
 		if(session.getAttribute("principal")==null) {
-			System.out.println("세션 없음");
-			OrderList orderCartList=(OrderList)session.getAttribute("orderCartList");
-			System.out.println(orderCartList);
+			session.setAttribute("custid", 0);
 			RequestDispatcher dis=request.getRequestDispatcher("order/orderPage.jsp");
 			dis.forward(request, response);
 		}else {
