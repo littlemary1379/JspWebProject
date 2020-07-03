@@ -12,7 +12,7 @@ import com.dailyT.action.Action;
 public class JoinAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		RequestDispatcher dis = request.getRequestDispatcher("customer/join.jsp");
 		dis.forward(request, response);
 	}

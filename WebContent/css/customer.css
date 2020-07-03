@@ -7,18 +7,31 @@
 	font-style: normal;
 }
 
-#join-title {
+.customer-title {
 	font-family: 'MapoGoldenPier';
 	font-weight: bold;
 	margin-top: 5%;
 	margin-bottom: 10%;
 }
 
-.join-form label {
+.customer-form label {
 	font-family: 'MapoGoldenPier';
 }
 
-.join-form button{
+.customer-form button{
+	background-color:white;
+	border:1px #333333 solid;
+	border-radius:3px;
+	font-family: 'MapoGoldenPier';
+	height:5%;
+}
+
+.join-text{
+	margin-top: 5%;
+	font-family: 'MapoGoldenPier';
+}
+
+.join-button {
 	background-color:white;
 	border:1px #333333 solid;
 	border-radius:3px;
