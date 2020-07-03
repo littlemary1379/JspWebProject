@@ -4,13 +4,15 @@
 
 
 <div class="container h-100 col-md-6">
-	<h4 id="join-title">Join</h4>
+	<h3 id="join-title">Join</h3>
 	<!-- 회원가입 입력 폼 -->	
-	<form class="form col-md-12 was-validated" action="/DailyT/cust?cmd=joinProc" method="post" onsubmit="return validate();">
+	<form class="join-form col-md-12 was-validated" action="/DailyT/cust?cmd=joinProc" method="post" onsubmit="return validate();">
 		<!-- ID 입력, 중복확인 폼 -->
 		<div class="form-group">
-			<label class="ID-label">ID :</label>
-			<button class="btn btn-primary" onclick="usernamecheck();" type="button"> ID 중복 확인</button>
+			<div class="d-flex justify-content-between">
+				<label class="ID-label">ID :</label>
+				<button class="join-button" onclick="usernamecheck();" type="button"> ID 중복 확인</button>
+			</div>
 			<input type="text" class="form-control" name="userID" id="userID" required="required">
 			<div class="invalid-feedback">빈 칸을 채워주세요.</div>
 		</div>
@@ -40,8 +42,10 @@
 			<div class="invalid-feedback">빈 칸을 채워주세요.</div>
 		</div>
 		<div class="form-group">
-			<label for="address">address :</label> 
-			<input type="button" onClick="goPopup();" value="주소 검색"/>
+			<div class="d-flex justify-content-between">
+				<label for="address">address :</label> 
+				<button class="join-button" type="button" onClick="goPopup();">주소 검색</button>
+			</div>
 			<input type="text" class="form-control" id="address" name="address" readonly required="required">
 			<div class="invalid-feedback">빈 칸을 채워주세요..</div>
 		</div>	
@@ -51,7 +55,7 @@
 			<div class="invalid-feedback">빈 칸을 채워주세요.</div>
 		</div>		
 		<div class="form-group d-flex justify-content-end">
-			<button class="btn btn-primary" type="submit">Join</button>
+			<button class="btn btn-default" type="submit">Join</button>
 		</div>
 	</form>
 
