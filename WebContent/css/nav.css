@@ -1,7 +1,19 @@
+/*웹 글꼴 로딩 css*/
+
 @font-face {
 	font-family: 'MapoFlowerIsland';
 	src:
 		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoFlowerIslandA.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+@font-face {
+	font-family: 'MapoGoldenPier';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoGoldenPierA.woff')
 		format('woff');
 	font-weight: normal;
 	font-style: normal;

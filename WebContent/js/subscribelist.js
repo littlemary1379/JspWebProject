@@ -31,7 +31,7 @@ function makelist(list) {
 	console.log(list.subName);
 	var listitem=`<div class="subscribe-item">`;
 	listitem += `<div class="subscribe-title">`;
-	listitem += `<h4>${list.subName}</h4>`;
+	listitem += `<h4><b>${list.subName}</b></h4>`;
 	listitem += `</div>`;
 	listitem += `<hr />`;
 	listitem += `<div class="subscribe-preview d-flex">`;

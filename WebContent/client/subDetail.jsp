@@ -21,6 +21,7 @@
 			<img class="subDetail-preimage col-sm-6" src="${subProduct.subPhoto }">
 
 			<div class="subDetail-precontent col-sm-6">
+				<div class>
 				<p>${subProduct.subPreview }</p>
 				<!-- 할인율에 따른 분기점 -->
 				<c:choose>
@@ -39,19 +40,22 @@
 						<p>${subProduct.subPrice}원</p>
 					</c:when>
 				</c:choose>
+				</div>
 				<!-- 분기 종료 -->
 
 				<!-- 기간 선택 폼 -->
-				<form class="subscribe-buy" action="/DailyT/order?cmd=subscribe" method="post">
-					<input type="hidden" id="subName" name="subName" value="${subProduct.subName}">
-					<select class="subscribe-buy-term col-sm-12" id="subscribe-buy-term" name="subscribe-buy-term">
-						<option>1개월</option>
-						<option>3개월</option>
-						<option>6개월</option>
-						<option>12개월</option>
-					</select>
-					<button class="col-sm-12">신청하기</button>
-				</form>
+				<div class="subscribe-buy align-self-end">
+					<form class="form action="/DailyT/order?cmd=subscribe" method="post">
+						<input type="hidden" id="subName" name="subName" value="${subProduct.subName}">
+						<select class="subscribe-buy-term col-sm-12" id="subscribe-buy-term" name="subscribe-buy-term">
+							<option>1개월</option>
+							<option>3개월</option>
+							<option>6개월</option>
+							<option>12개월</option>
+						</select>
+						<button class="subButton col-sm-12">신청하기</button>
+					</form>
+				</div>
 				<!-- 선택 폼 종료 -->
 			</div>
 		</div>
@@ -96,7 +100,7 @@
 
 		<div class="form-group d-flex">
 			<textarea class="form-control" rows="5" id="subContent"></textarea>
-			<button type="button" onclick="writeSubReply(${subProduct.subId},${sessionScope.principal.custid})" class="col-sm-2">등록하기</button>
+			<button class="subButton" type="button" onclick="writeSubReply(${subProduct.subId},${sessionScope.principal.custid})" class="col-sm-2">등록하기</button>
 		</div>
 
 	</form>

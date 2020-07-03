@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
     
 <!DOCTYPE html>
 <html lang="en">
@@ -10,13 +12,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="stylesheet" href="/DailyT/css/nav.css">
-<link rel="stylesheet" href="/DailyT/css/home.css">
-<link rel="stylesheet" href="/DailyT/css/subscribe.css">
-<link rel="stylesheet" href="/DailyT/css/customer.css">
+<link rel="stylesheet" href="/DailyT/css/body.css">
 <link rel="stylesheet" href="/DailyT/css/footer.css">
 
 
-
+ <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -56,35 +58,35 @@
 
 		<!-- 브랜드 스토리, 정기구독, 단품, 도구, 이벤트 내비게이션 -->
 		<div class="nav2">
-			<nav class="navbar navbar-menu navbar-expand-sm">
+			<nav class="navbar navbar-menu navbar-expand-sm justify-content-between">
 
 				<ul class="navbar-nav">
 					<li class="nav-item"><a class="nav-link" href="/DailyT/index?cmd=home">
 						<img src="/DailyT/img/dailyT-100px.png" alt="Logo" style="width: 50px;"></a>
 					</li>
-					<li class="nav-item2 col-md-3">
+					<li class="nav-item2 col-md-3 align-self-center">
 					<a class="nav-link" href="#">브랜드</a>
-						<ul class="detail-nav2">
+						<ul class="detail-nav2 ">
 							<li><a class="detail-nav-link" href="#">브랜드 스토리</a></li>
 							<li><a class="detail-nav-link" href="#">쇼룸</a></li>
 						</ul></li>
-					<li class="nav-item3 col-md-3"><a class="nav-link" href="/DailyT/client?cmd=sublist&season=all">정기구독</a>
+					<li class="nav-item3 col-md-3 align-self-center"><a class="nav-link" href="/DailyT/client?cmd=sublist&season=all">정기구독</a>
 						<ul class="detail-nav3">
 							<li><a class="detail-nav-link" href="/DailyT/client?cmd=sublist&season=origin">정기 구독</a></li>
 							<li><a class="detail-nav-link" href="/DailyT/client?cmd=sublist&season=season">시즌 구독</a></li>
 						</ul></li>
-					<li class="nav-item4 col-md-3"><a class="nav-link" href="/DailyT/client?cmd=prolist&category=all">단품</a>
+					<li class="nav-item4 col-md-3 align-self-center"><a class="nav-link" href="/DailyT/client?cmd=prolist&category=all">단품</a>
 						<ul class="detail-nav4">
 							<li><a class="detail-nav-link" href="/DailyT/client?cmd=prolist&category=blacktea">홍차</a></li>
 							<li><a class="detail-nav-link" href="/DailyT/client?cmd=prolist&category=greentea">녹차</a></li>
 							<li><a class="detail-nav-link" href="/DailyT/client?cmd=prolist&category=whitetea">백차</a></li>
 						</ul></li>
-					<li class="nav-item5 col-md-3"><a class="nav-link" href="/DailyT/client?cmd=toollist&category=all">도구</a>
+					<li class="nav-item5 col-md-3 align-self-center"><a class="nav-link" href="/DailyT/client?cmd=toollist&category=all">도구</a>
 						<ul class="detail-nav5">
 							<li><a class="detail-nav-link" href="/DailyT/client?cmd=toollist&category=package">스타터팩</a></li>
 							<li><a class="detail-nav-link" href="/DailyT/client?cmd=toollist&category=tool">다구</a></li>
 						</ul></li>
-					<li class="nav-item  col-md-3"><a class="nav-link" href="/DailyT/client?cmd=eventlist">이벤트</a>
+					<li class="nav-item  col-md-3 align-self-center"><a class="nav-link" href="/DailyT/client?cmd=eventlist">이벤트</a>
 					</li>
 				</ul>
 			</nav>
