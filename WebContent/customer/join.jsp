@@ -4,7 +4,7 @@
 
 
 <div class="container h-100 col-md-6">
-	<h3 id="join-title">Join</h3>
+	<h3 class="customer-title">Join</h3>
 	<!-- 회원가입 입력 폼 -->	
 	<form class="customer-form col-md-12 was-validated" action="/DailyT/cust?cmd=joinProc" method="post" onsubmit="return validate();">
 		<!-- ID 입력, 중복확인 폼 -->
