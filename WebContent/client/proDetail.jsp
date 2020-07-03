@@ -43,16 +43,16 @@
 				</c:choose>
 				<!-- 분기 종료 -->
 
-				<!-- 갯수 선택 폼 -->
+				<!-- 갯수 선택,구매 폼 -->
 				<form class="proscribe-buy" action="">
 					<label for="amount">갯수 :</label> 
 					<input type="text" class="form-control" id="amount" name="amount">
 					<div class="d-flex">
-						<button class="col-sm-6">구매하기</button>
+						<button class="col-sm-6" type="button" onclick="directOrder('${product.proName}','${product.proPhoto }','${proPrice }');">구매하기</button>
 						<button class="col-sm-6" type="button" onclick="addCart('${product.proName}','${product.proPhoto }','${proPrice }');">장바구니</button>
 					</div>
 				</form>
-				<!-- 갯수 입력 폼 종료 -->
+				<!-- 갯수 입력,구매 폼 종료 -->
 			</div>
 		</div>
 		<hr />
@@ -152,4 +152,4 @@
 </div>
 <!-- 덧글 게시 종료 -->
 <script src="/DailyT/js/proReply.js"></script>
-<script src="/DailyT/js/addCart.js"></script>
+<script src="/DailyT/js/purchase.js"></script>

@@ -26,6 +26,7 @@
 				<c:choose>
 					<%--할인율이 있을 때의 출력 --%>
 					<c:when test="${product.proSale ne 0  }">
+						<c:set var="proPrice" value="${product.proPrice*(1-product.proSale/100) }" />
 						<p style="text-decoration: line-through;">${product.proPrice}원</p>
 						<p>
 							→
@@ -36,6 +37,7 @@
 
 					<%--할인율이 없을 때의 출력 --%>
 					<c:when test="${product.proSale eq 0  }">
+						<c:set var="proPrice" value="${product.proPrice}" />
 						<p>${product.proPrice}원</p>
 					</c:when>
 				</c:choose>
@@ -43,11 +45,10 @@
 
 				<!-- 갯수 선택 폼 -->
 				<form class="proscribe-buy" action="">
-					<label for="amount">갯수 :</label> 
-					<input type="text" class="form-control" id="amount" name="amount">
+					<label for="amount">갯수 :</label> <input type="text" class="form-control" id="amount" name="amount">
 					<div class="d-flex">
 						<button class="col-sm-6">구매하기</button>
-						<button class="col-sm-6">장바구니</button>
+						<button class="col-sm-6" type="button" onclick="addCart('${product.proName}','${product.proPhoto }','${proPrice }');">장바구니</button>
 					</div>
 				</form>
 				<!-- 갯수 입력 폼 종료 -->
@@ -71,28 +72,23 @@
 		<div class="proDetail-grade">
 			<label>별점 :</label>
 			<div class="form-check-inline">
-				<label class="form-check-label" for="radio1"> 
-				<input type="radio" class="form-check-input" id="radio" name="proGrade" value="1">★☆☆☆☆
+				<label class="form-check-label" for="radio1"> <input type="radio" class="form-check-input" id="radio" name="proGrade" value="1">★☆☆☆☆
 				</label>
 			</div>
 			<div class="form-check-inline">
-				<label class="form-check-label" for="radio2"> 
-				<input type="radio" class="form-check-input" id="radio" name="proGrade" value="2">★★☆☆☆
+				<label class="form-check-label" for="radio2"> <input type="radio" class="form-check-input" id="radio" name="proGrade" value="2">★★☆☆☆
 				</label>
 			</div>
 			<div class="form-check-inline">
-				<label class="form-check-label"> 
-				<input type="radio" class="form-check-input" id="radio" name="proGrade" value="3">★★★☆☆
+				<label class="form-check-label"> <input type="radio" class="form-check-input" id="radio" name="proGrade" value="3">★★★☆☆
 				</label>
 			</div>
 			<div class="form-check-inline">
-				<label class="form-check-label"> 
-				<input type="radio" class="form-check-input" id="radio" name="proGrade" value="4">★★★★☆
+				<label class="form-check-label"> <input type="radio" class="form-check-input" id="radio" name="proGrade" value="4">★★★★☆
 				</label>
 			</div>
 			<div class="form-check-inline">
-				<label class="form-check-label"> 
-				<input type="radio" class="form-check-input" id="radio" name="proGrade" value="5">★★★★★
+				<label class="form-check-label"> <input type="radio" class="form-check-input" id="radio" name="proGrade" value="5">★★★★★
 				</label>
 			</div>
 		</div>
@@ -150,3 +146,4 @@
 </div>
 <!-- 덧글 게시 종료 -->
 <script src="/DailyT/js/proReply.js"></script>
+<script src="/DailyT/js/purchase.js"></script>

@@ -22,6 +22,7 @@ public class UserOrderAction implements Action {
 			
 			Customer customer=(Customer)session.getAttribute("principal");
 			int custid=customer.getCustid();
+			System.out.println(custid);
 			session.setAttribute("custid", custid);
 			
 			if (session.getAttribute("orderlist") != null) {

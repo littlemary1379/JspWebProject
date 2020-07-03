@@ -30,6 +30,28 @@ public class OrderRepository {
 	private ResultSet rs=null;
 	
 	
+	public int OrderSave(int custid, String deliveryName,String deliveryAddr, String deliveryPhone, String orderProName, String orderPhoto,int orderProPrice,int count) {
+		final String SQL="insert into orderlist (orderId,custid,deliveryName,deliveryAddr,deliveryPhone,orderProName,orderPhoto,orderProPrice,count) " + 
+				"VALUES (orderId_SEQ.nextval,?,?,?,?,?,?,?,?)";
+		try {
+			conn=DBconnection.DBconn();
+			pstmt=conn.prepareStatement(SQL);
+			pstmt.setInt(1, custid);
+			pstmt.setString(2, deliveryName);
+			pstmt.setString(3, deliveryAddr);
+			pstmt.setString(4, deliveryPhone);
+			pstmt.setString(5, orderProName);
+			pstmt.setString(6, orderPhoto);
+			pstmt.setInt(7, orderProPrice);
+			pstmt.setInt(8, count);
+			
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(TAG+"OrderSave : "+e.getMessage());
+		}
+		return -1;
+	}
 	
 	public List<Subscribe> FindSubscribeByCustid(int custid) {
 		final String SQL="select subscribeKind,subscribeDate,subscribeTerm from subscribe where custid=?";

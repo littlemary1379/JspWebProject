@@ -45,13 +45,13 @@
 </div>
 <div class="container h-100 col-md-6">
 	
-	<form class="form col-md-12 was-validated" action="/DailyT/order?cmd=subscribeProc" method="post">
+	<form class="form col-md-12 was-validated" action="/DailyT/order?cmd=orderProc" method="post">
 		
 
 		<div class="delivery">
-			<c:if test="${custid ne 0} ">
+			
 			<button type="button" onclick="sameOrder(${custid })">주문자와 동일</button>
-			</c:if>
+		
 			<div class="form-group">
 				<label for="nickname">이름 :</label> 
 				<input type="text" class="form-control" name="deliveryName" id="deliveryName" required="required">

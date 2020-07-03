@@ -16,7 +16,7 @@ import com.dailyT.model.OrderList.OrderLists;
 import com.dailyT.util.Script;
 import com.google.gson.Gson;
 
-public class addCartAction implements Action{
+public class AddCartAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

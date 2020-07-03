@@ -10,14 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.dailyT.action.Action;
 import com.dailyT.action.order.CheckCartAction;
+import com.dailyT.action.order.DirectOrderAction;
 import com.dailyT.action.order.NonUserOrderAction;
 import com.dailyT.action.order.OrderLoginAction;
+import com.dailyT.action.order.OrderProcAction;
 import com.dailyT.action.order.SubscribeAction;
 import com.dailyT.action.order.SubscribeCheckAction;
 import com.dailyT.action.order.SubscribeProcAction;
 import com.dailyT.action.order.UserCheckAction;
 import com.dailyT.action.order.UserOrderAction;
-import com.dailyT.action.order.addCartAction;
+import com.dailyT.action.order.AddCartAction;
 import com.dailyT.action.order.sameOrderAction;
 
 
@@ -64,7 +66,9 @@ public class OrderController extends HttpServlet {
 		}else if(cmd.equals("checkCart")) { 
 			return new CheckCartAction(); //정기구독 등록 액션
 		}else if(cmd.equals("addCart")) { 
-			return new addCartAction(); //정기구독 등록 액션
+			return new AddCartAction(); //정기구독 등록 액션
+		}else if(cmd.equals("directOrder")) { 
+			return new DirectOrderAction(); //정기구독 등록 액션
 		}else if(cmd.equals("userCheck")) { 
 			return new UserCheckAction(); //정기구독 등록 액션
 		}else if(cmd.equals("UserOrder")) { 
@@ -73,6 +77,8 @@ public class OrderController extends HttpServlet {
 			return new OrderLoginAction(); //정기구독 등록 액션
 		}else if(cmd.equals("nonUserOrder")) { 
 			return new NonUserOrderAction(); //정기구독 등록 액션
+		}else if(cmd.equals("orderProc")) { 
+			return new OrderProcAction(); //정기구독 등록 액션
 		}
 		
 		return null;
