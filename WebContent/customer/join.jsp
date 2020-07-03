@@ -63,5 +63,6 @@
 
 <script src="/DailyT/js/juso.js"></script>
 <script src="/DailyT/js/join.js"></script>
-</body>
+
+<%@ include file="../include/footer.jsp"%>
 </html>
