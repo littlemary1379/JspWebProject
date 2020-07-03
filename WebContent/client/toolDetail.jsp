@@ -47,7 +47,7 @@
 				<form class="proscribe-buy" action="">
 					<label for="amount">갯수 :</label> <input type="text" class="form-control" id="amount" name="amount">
 					<div class="d-flex">
-						<button class="col-sm-6">구매하기</button>
+						<button class="col-sm-6" type="button" onclick="directOrder('${product.proName}','${product.proPhoto }','${proPrice }');">구매하기</button>
 						<button class="col-sm-6" type="button" onclick="addCart('${product.proName}','${product.proPhoto }','${proPrice }');">장바구니</button>
 					</div>
 				</form>

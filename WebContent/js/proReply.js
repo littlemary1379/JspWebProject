@@ -22,8 +22,6 @@ function deleteProReply(replyid){
 			console.log("서버 오류");
 		});
 	
-	}else{
-		alert("삭제에 실패하셨습니다.");
 	}
 	
 }
