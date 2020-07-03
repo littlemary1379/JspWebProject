@@ -9,7 +9,11 @@ function validate(){
 
 function usernamecheck() {
 	var tfUserID=$("#userID").val();
-	console.log(tfUserID);
+	
+	if(tfUserID.length==0){
+		alert("아이디를 입력하세요.");
+		return;
+	}
 
 	$.ajax({
 		type:'get',

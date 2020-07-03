@@ -1,82 +1,113 @@
-.navbar-menu{
-	width:100%;
-	background:white;
-	font-color:black;
-}
-.nav-link{
-	font-weight:bold;
-	color:black;
-}
-
-.nav-item{
-	padding:0px;
-}
-
-.detail-nav2{
-position:absolute; display:none;	
-border:1px black soild ;
-list-style:none;
-padding-left:0%;
-min-width:120px;
-padding:3%;
-background-color:white; 
-opacity:0.8;
-z-index: 2;
-}
-
-.detail-nav2 a{
+@font-face {
+	font-family: 'MapoFlowerIsland';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoFlowerIslandA.woff')
+		format('woff');
 	font-weight: normal;
-	color:black;
-}
-.detail-nav3{
-position:absolute; display:none;	
-border:1px black soild ;
-list-style:none;
-padding-left:0%;
-min-width:120px;
-padding:3%;
-background-color:white; 
-opacity:0.8;
-z-index: 2;
+	font-style: normal;
 }
 
-.detail-nav3 a{
+.nav2 {
+	z-index: 2;
+	text-align: center;
+	padding: 10px 0px;
+	width: 100%;
+	font-family: "MapoFlowerIsland";
+}
+
+.nav1 {
+	z-index: 2;
+	text-align: center;
+	padding: 10px 0px;
+	width: 100%;
+	font-family: "MapoFlowerIsland";
+}
+
+.navbar-menu {
+	width: 100%;
+	background: white;
+	font-color: black;
+}
+
+.nav-link {
+	font-weight: bold;
+	color: black;
+}
+
+.nav-item {
+	padding: 0px;
+}
+
+.detail-nav2 {
+	position: absolute;
+	display: none;
+	border: 1px black soild;
+	list-style: none;
+	padding-left: 0%;
+	min-width: 120px;
+	padding: 3%;
+	background-color: white;
+	opacity: 0.8;
+	z-index: 2;
+}
+
+.detail-nav2 a {
 	font-weight: normal;
-	color:black;
+	color: black;
 }
 
-.detail-nav4{
-position:absolute; display:none;	
-border:1px black soild ;
-list-style:none;
-padding-left:0%;
-min-width:120px;
-padding:3%;
-background-color:white; 
-opacity:0.8;
-z-index: 2;
+.detail-nav3 {
+	position: absolute;
+	display: none;
+	border: 1px black soild;
+	list-style: none;
+	padding-left: 0%;
+	min-width: 120px;
+	padding: 3%;
+	background-color: white;
+	opacity: 0.8;
+	z-index: 2;
 }
 
-.detail-nav4 a{
+.detail-nav3 a {
 	font-weight: normal;
-	color:black;
+	color: black;
 }
 
-.detail-nav5{
-position:absolute; display:none;	
-border:1px black soild ;
-list-style:none;
-padding-left:0%;
-min-width:120px;
-padding:3%;
-background-color:white; 
-opacity:0.8;
-z-index: 2;
+.detail-nav4 {
+	position: absolute;
+	display: none;
+	border: 1px black soild;
+	list-style: none;
+	padding-left: 0%;
+	min-width: 120px;
+	padding: 3%;
+	background-color: white;
+	opacity: 0.8;
+	z-index: 2;
 }
 
-.detail-nav5 a{
+.detail-nav4 a {
 	font-weight: normal;
-	color:black;
+	color: black;
+}
+
+.detail-nav5 {
+	position: absolute;
+	display: none;
+	border: 1px black soild;
+	list-style: none;
+	padding-left: 0%;
+	min-width: 120px;
+	padding: 3%;
+	background-color: white;
+	opacity: 0.8;
+	z-index: 2;
+}
+
+.detail-nav5 a {
+	font-weight: normal;
+	color: black;
 }
 
 .nav2 {
