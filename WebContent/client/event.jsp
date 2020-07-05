@@ -12,7 +12,9 @@
 
 <!-- 이벤트 목록 시작 -->
 <div class="container">
+<div class="event-title">
 	<h4> 전체 이벤트 목록 </h4>
+	</div>
 	<hr/>
 	<div id="subscribe-items">
 		<c:forEach items="${events }" var="events">

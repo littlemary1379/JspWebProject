@@ -6,7 +6,7 @@
 
 <!-- 페이지 메인 배너-->
 <div class="container-fluid">
-	<img class="main-banner" src="/DailyT/img/text-banner-exam3.png">
+	<img class="main-banner" src="/DailyT/img/banner-exam7.png">
 </div>
 <!-- 페이지 메인 배너 끝 -->
 

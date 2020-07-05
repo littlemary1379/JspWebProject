@@ -6,7 +6,7 @@
 
 <!-- 페이지 메인 배너-->
 <div class="container-fluid">
-	<img class="main-banner" src="/DailyT/img/text-banner-exam2.png">
+	<img class="main-banner" src="/DailyT/img/banner-exam4.png">
 </div>
 <!-- 페이지 메인 배너 끝 -->
 
@@ -15,9 +15,9 @@
 
 	<!-- 카테고리별 버튼 -->
 	<div class="product-button d-flex">
-		<button onclick="toollistChange('전체');">전체</button>
-		<button onclick="toollistChange('패키지');">스타터팩</button>
-		<button onclick="toollistChange('다구');">다구</button>
+		<button class="mr-2" onclick="toollistChange('전체');"><i class="fas fa-blender"></i><br />전체</button>
+		<button class="mr-2" onclick="toollistChange('패키지');"><i class="fas fa-gift"></i><br />스타터팩</button>
+		<button class="mr-2" onclick="toollistChange('다구');"><i class="fas fa-shapes"></i><br />다구</button>
 
 	</div>
 	<!-- 버튼 종료 -->

@@ -6,7 +6,7 @@
 
 <!-- 페이지 메인 배너-->
 <div class="container-fluid">
-	<img class="main-banner" src="/DailyT/img/text-banner-exam2.png">
+	<img class="main-banner" src="/DailyT/img/banner-exam5.png">
 </div>
 <!-- 페이지 메인 배너 끝 -->
 
@@ -15,10 +15,10 @@
 
 	<!-- 카테고리별 버튼 -->
 	<div class="product-button d-flex">
-		<button onclick="prolistChange('전체');">전체</button>
-		<button onclick="prolistChange('홍차');">홍차</button>
-		<button onclick="prolistChange('녹차');">녹차</button>
-		<button onclick="prolistChange('백차');">백차</button>
+		<button  class="mr-2" onclick="prolistChange('전체');"><i class="fas fa-glass-cheers"></i><br />전체</button>
+		<button  class="mr-2" onclick="prolistChange('홍차');"><i class="fas fa-mug-hot	"></i><br />홍차</button>
+		<button  class="mr-2" onclick="prolistChange('녹차');"><i class="fas fa-coffee"></i><br />녹차</button>
+		<button  class="mr-2" onclick="prolistChange('백차');"><i class="fas fa-glass-whiskey"></i><br />백차</button>
 
 	</div>
 	<!-- 버튼 종료 -->

@@ -51,7 +51,7 @@
 			<p id="totalPrice">${totalPrice }</p>
 			
 		</div>
-		<button onclick="UpdateCart(${endPoint});">주문하기</button>
+		<button class="cart-button" onclick="UpdateCart(${endPoint});">주문하기</button>
 	</div>
 </div>
 <script src="/DailyT/js/addDel.js"></script>
