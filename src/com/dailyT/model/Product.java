@@ -21,4 +21,5 @@ public class Product {
 	private String proPhoto;
 	private String preview;
 	private String proContent;
+
 }

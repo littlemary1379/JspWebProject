@@ -33,6 +33,8 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3c2e90f66703dcf889a1615fc1a55583"></script>
+
 <script src="/DailyT/js/nav.js"></script>
 </head>
 <body>
@@ -65,10 +67,10 @@
 						<img src="/DailyT/img/dailyT-100px.png" alt="Logo" style="width: 50px;"></a>
 					</li>
 					<li class="nav-item2 col-md-3 align-self-center">
-					<a class="nav-link" href="#">브랜드</a>
+					<a class="nav-link" href="/DailyT/client?cmd=brand">브랜드</a>
 						<ul class="detail-nav2 ">
-							<li><a class="detail-nav-link" href="#">브랜드 스토리</a></li>
-							<li><a class="detail-nav-link" href="#">쇼룸</a></li>
+							<li><a class="detail-nav-link" href="/DailyT/client?cmd=brand">브랜드 스토리</a></li>
+							<li><a class="detail-nav-link" href="/DailyT/client?cmd=showroom">쇼룸</a></li>
 						</ul></li>
 					<li class="nav-item3 col-md-3 align-self-center"><a class="nav-link" href="/DailyT/client?cmd=sublist&season=all">정기구독</a>
 						<ul class="detail-nav3">

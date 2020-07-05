@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.dailyT.action.Action;
 import com.dailyT.action.client.ProListAction;
 import com.dailyT.action.client.ProListChangeAction;
+import com.dailyT.action.client.ShowroomAction;
 import com.dailyT.action.client.SubListAction;
 import com.dailyT.action.client.SubListChangeAction;
 import com.dailyT.action.client.ToolDetailAction;
@@ -17,6 +18,8 @@ import com.dailyT.action.client.ToolListAction;
 import com.dailyT.action.client.ToolListChangeAction;
 import com.dailyT.action.client.WriteProReplyAction;
 import com.dailyT.action.client.WriteSubReplyAction;
+import com.dailyT.action.client.BrandAction;
+import com.dailyT.action.client.BrandChangeAction;
 import com.dailyT.action.client.DeleteProReplyAction;
 import com.dailyT.action.client.DeleteSubReplyAction;
 import com.dailyT.action.client.EventListAction;
@@ -57,6 +60,12 @@ public class ClientController extends HttpServlet {
 	Action router(String cmd) {
 		if(cmd.equals("sublist")) {
 			return new SubListAction();
+		}else if(cmd.equals("brand")) {
+			return new BrandAction();
+		}else if(cmd.equals("showroom")) {
+			return new ShowroomAction();
+		}else if(cmd.equals("brandChange")) {
+			return new BrandChangeAction();
 		}else if(cmd.equals("sublistchange")) {
 			return new SubListChangeAction();
 		}else if(cmd.equals("subDetail")) {

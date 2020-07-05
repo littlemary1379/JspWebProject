@@ -13,7 +13,7 @@
  		
  		<div class="site-map">
  			<p class="footer-info-title"><b>site-map</b></p>
-			<p><a class="site-map-link" href="#">브랜드</a></p>
+			<p><a class="site-map-link" href="/DailyT/client?cmd=brand">브랜드</a></p>
 			<p><a class="site-map-link" href="/DailyT/client?cmd=sublist&season=all">정기구독</a></p>
 			<p><a class="site-map-link" href="/DailyT/client?cmd=prolist&category=all">단품</a></p>
 			<p><a class="site-map-link" href="/DailyT/client?cmd=toollist&category=all">도구</a></p>
